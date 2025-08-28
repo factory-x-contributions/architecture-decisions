@@ -42,6 +42,9 @@ issuer-holder-verifier triangle)
 ### References
 
 [1] [w3c/did-core: W3C Decentralized Identifier Specification v1.0 (github.com)](https://www.w3.org/TR/did/)
+
 [2] [did:web Method Specification (w3c-ccg.github.io)](https://w3c-ccg.github.io/did-method-web/)
+
 [3] [Verifiable Credentials Data Model v1.1 (w3.org)](https://www.w3.org/TR/2022/REC-vc-data-model-20220303/)
+
 [4] [Eclipse Decentralized Claims Protocol (eclipse-dataspace-dcp.github.io)](https://eclipse-dataspace-dcp.github.io/decentralized-claims-protocol/)
