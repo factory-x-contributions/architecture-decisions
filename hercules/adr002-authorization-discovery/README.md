@@ -43,8 +43,6 @@ No common authz-stack: This would necessitate all participants of the ecosystem 
 all data sources and sinks for each use case. There'd be no unified discovery, there'd by no way to know for the
 consumer what proof of identity to present.
 
-Ocean Protocol: Unclear governance structure in Pontus/GAIA-X world
-
 AAS Discovery + ABAC: Not feasible for Non-AAS-Resources, no consideration of terms of Data Exchange, unclear trust
 model and authentication mechanisms
 

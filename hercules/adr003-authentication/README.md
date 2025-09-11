@@ -18,12 +18,6 @@ S2) leave it up to each participant what issuers to trust for what claims.
 S3) Design a common set of Factory-X credential claims to be exchanged, extending the W3C Verifiable Credential (VC)
 Standard [3], exchanged via the Verifiable Presentation Protocol that is part of the Decentralized Claims Protocol [4].
 
-### How requirements are addressed
-
-The PR places focus on preserving existing identity systems in participant-internal realms (see REQ 006) but does NOT
-propagate those external identities into the Dataspace.
-
-It places significant focus on decentralization to comply with REQ 001.
 
 ### Expected business consequences
 
