@@ -1,4 +1,4 @@
-## ADR 012
+## ADR 012 - MQTT over DSP
 
 ### Problem to be solved
 
@@ -16,8 +16,6 @@ Similar to [ADR 011](../adr011-eventing-with-aas-payloads/README.md), This ADR p
 
 In order to find and connect to an MQTT broker through DSP, the relevant metadata must be included in the catalog
 entry of the MX-Port. A `Distribution` object MUST have the `format` property set to `Mqtt-PULL`.
-
-The property `http://purl.org/dc/terms/type` has to be an array containing `https://w3id.org/factoryx/types/mqtt-aas`.
 
 ##### Provider-Side Configuration Example  (non-normative)
 
