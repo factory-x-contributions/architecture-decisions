@@ -1,0 +1,15 @@
+architecture_decision_records:
+  label: Architecture Decision Records
+  permalink: /docs/hercules/adr002-authorization-discovery/
+  description: These are the official Factory-X Architecture Decision Records.
+
+factory-x:
+  label: Factory-X
+  permalink: https://factory-x.org/de/
+  description: Welcome to Factory-X, the digital ecosystem.
+
+docusaurus:
+  label: Docusaurus
+  permalink: https://github.com/facebook/docusaurus
+  description: Docusaurus is a project for building, deploying, and maintaining open source project websites easily.
+

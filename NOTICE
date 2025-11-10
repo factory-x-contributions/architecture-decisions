@@ -19,10 +19,15 @@ source code repository logs.
 The Factory-X project uses the following licenses:
 
 - CC-BY-4.0 for non-code
+- Apache 2.0 for code
 
 CC-BY-4.0:
 The materials in this repository are made available under the terms of the Creative Commons Attribution 4.0 International License, which is available at https://spdx.org/licenses/CC-BY-4.0.html.
 SPDX-License-Identifier: CC-BY-4.0
+
+Apache 2.0:
+The code in this repository is made available under the terms of the Apache License, Version 2.0, which is available at https://spdx.org/licenses/Apache-2.0.html.
+SPDX-License-Identifier: Apache-2.0
 
 ## Cryptography
 
