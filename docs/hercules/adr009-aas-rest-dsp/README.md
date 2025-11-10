@@ -1,4 +1,6 @@
-## Discovery of AAS Services via DSP
+---
+title: ADR 009 – Discovery of AAS Services via DSP
+---
 
 ### Problem to be solved
 

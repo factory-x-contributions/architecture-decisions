@@ -1,4 +1,6 @@
-## ADR003 - Authentication for Dataspace
+---
+title: ADR 003 – Authentication for Dataspace
+---
 
 ### Problem to be solved
 

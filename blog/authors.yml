@@ -1,0 +1,17 @@
+janiskretschmann:
+  name: Janis Kretschmann
+  title: Associate Developer at SAP
+  image_url: https://avatars.githubusercontent.com/u/78437026?s=400&u=a5f2b1e36bf6c4d7094846301a6fd4a28a88bf74&v=4
+  page: true
+  socials:
+    linkedin: janis kretschmann
+    github: Janis_Kretschmann
+
+arnoweiss:
+  name: Arno Weiß
+  title: Senior Developer at SAP
+  image_url: https://avatars.githubusercontent.com/u/86715435?v=4
+  page: true
+  socials:
+    linkedin: arnolweiss
+    github: arnoweiss

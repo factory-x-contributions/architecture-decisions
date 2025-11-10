@@ -1,4 +1,6 @@
-## ADR 002 – Cross-Company Authorization and Discovery
+---
+title: ADR 002 – Cross-Company Authorization and Discovery
+---
 
 ### Problem to be solved
 
