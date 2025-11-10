@@ -7,16 +7,19 @@ const config = {
   title: 'Factory-X Contributions',
   tagline: 'We are creating an open and collaborative digital ecosystem for factory outfitters and operators, built on the foundations of Catena‑X and the principles of Plattform Industrie 4.0.',
   favicon: 'https://factory-x.org/wp-content/uploads//factory-x-logo.svg',
-  baseUrl: '/',
+
+  baseUrl: '/architecture-decisions/',
   url: 'https://janiskre.github.io',
+  organizationName: 'janiskre', 
+  projectName: 'architecture-decisions', 
+  
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
   future: {
     v4: true,
   },
 
-  organizationName: 'janiskre', 
-  projectName: 'architecture-decisions', 
+
 
   i18n: {
     defaultLocale: 'en',
@@ -54,9 +57,9 @@ const config = {
           src: 'https://factory-x.org/wp-content/uploads//factory-x-logo.svg',
         },
         items: [
-          {to: './hercules/adr002-authorization-discovery/', label: 'Hercules', position: 'left'},
-          {to: './leo/leo_placeholder', label: 'Leo', position: 'left'},
-          {to: './orion/orion_placeholder', label: 'Orion', position: 'left'},
+          {to: 'docs/hercules/adr002-authorization-discovery/', label: 'Hercules', position: 'left'},
+          {to: 'docs/leo/leo_placeholder', label: 'Leo', position: 'left'},
+          {to: 'docs/orion/orion_placeholder', label: 'Orion', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/factory-x-contributions',
@@ -72,7 +75,7 @@ const config = {
             items: [
               {
                 label: 'Hercules',
-                to: './hercules/adr002-authorization-discovery/',
+                to: 'docs/hercules/adr002-authorization-discovery/',
               },
             ],
           },
