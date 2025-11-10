@@ -2,16 +2,19 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 // https://github.com/eclipse-tractusx/tractusx-edc/blob/main/.github/dependabot.yml
 
+const organizationName = "janiskre";
+const projectName = "architecture-decisions";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Factory-X Contributions',
   tagline: 'We are creating an open and collaborative digital ecosystem for factory outfitters and operators, built on the foundations of Catena‑X and the principles of Plattform Industrie 4.0.',
   favicon: 'https://factory-x.org/wp-content/uploads//factory-x-logo.svg',
 
-  baseUrl: '/architecture-decisions/',
-  url: 'https://janiskre.github.io',
-  organizationName: 'janiskre', 
-  projectName: 'architecture-decisions', 
+  baseUrl: `/${projectName}/`,
+  url: `https://${organizationName}.github.io`,
+  organizationName, 
+  projectName, 
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
