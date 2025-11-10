@@ -9,7 +9,7 @@ const config = {
   favicon: 'https://factory-x.org/wp-content/uploads//factory-x-logo.svg',
 
   baseUrl: '/architecture-decisions/',
-  url: 'https://janiskretschmann.github.io',
+  url: 'https://janiskre.github.io',
   organizationName: 'janiskre', 
   projectName: 'architecture-decisions', 
   trailingSlash: false,
