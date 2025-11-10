@@ -12,6 +12,7 @@ const config = {
   url: 'https://janiskre.github.io',
   organizationName: 'janiskre', 
   projectName: 'architecture-decisions', 
+  trailingSlash: false,
   
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
