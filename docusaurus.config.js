@@ -57,9 +57,9 @@ const config = {
           src: 'https://factory-x.org/wp-content/uploads//factory-x-logo.svg',
         },
         items: [
-          {to: 'architecture-decisions/fx_docs/hercules/adr002-authorization-discovery/', label: 'Hercules', position: 'left'},
-          {to: './docs/leo/leo_placeholder', label: 'Leo', position: 'left'},
-          {to: './fx_docs/orion/orion_placeholder', label: 'Orion', position: 'left'},
+          {to: './hercules/adr002-authorization-discovery/', label: 'Hercules', position: 'left'},
+          {to: './leo/leo_placeholder', label: 'Leo', position: 'left'},
+          {to: './orion/orion_placeholder', label: 'Orion', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/factory-x-contributions',
@@ -75,7 +75,7 @@ const config = {
             items: [
               {
                 label: 'Hercules',
-                to: '../fx_docs/hercules/adr002-authorization-discovery/',
+                to: './hercules/adr002-authorization-discovery/',
               },
             ],
           },
