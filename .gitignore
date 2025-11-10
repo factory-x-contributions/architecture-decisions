@@ -30,6 +30,8 @@
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
+node_modules/
+
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
