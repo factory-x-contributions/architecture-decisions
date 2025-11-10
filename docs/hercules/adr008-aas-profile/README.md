@@ -2,8 +2,6 @@
 title: ADR 008 – Asset Administration Shell Profile for Factory-X
 ---
 
-## ADR008 - Asset Administration Shell Profile for Factory-X
-
 ### Problem to be solved
 
 The Asset Administration Shell API-specification (IDTA 01002-3-0) defines a discovery and retrieval process for

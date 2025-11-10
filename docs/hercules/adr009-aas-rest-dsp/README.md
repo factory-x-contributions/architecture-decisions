@@ -2,8 +2,6 @@
 title: ADR 009 – Discovery of AAS Services via DSP
 ---
 
-## Discovery of AAS Services via DSP
-
 ### Problem to be solved
 
 The interaction via Dataspace Protocol (according to ADR 002) facilitates the discovery of services such as APIs. So

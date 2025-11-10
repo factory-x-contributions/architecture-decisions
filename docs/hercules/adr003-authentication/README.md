@@ -2,8 +2,6 @@
 title: ADR 003 – Authentication for Dataspace
 ---
 
-## ADR003 - Authentication for Dataspace
-
 ### Problem to be solved
 
 Participants need a secure way to judge one another's authenticity and the claims made about them. That includes the

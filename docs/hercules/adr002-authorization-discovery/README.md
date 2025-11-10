@@ -2,8 +2,6 @@
 title: ADR 002 – Cross-Company Authorization and Discovery
 ---
 
-## ADR 002 – Cross-Company Authorization and Discovery
-
 ### Problem to be solved
 
 Cross-Company data transfer requires discovery and fine grained authorization for access to resources. At the same time,
