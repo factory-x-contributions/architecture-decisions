@@ -1,3 +1,7 @@
+---
+title: ADR 008 – Asset Administration Shell Profile for Factory-X
+---
+
 ## ADR008 - Asset Administration Shell Profile for Factory-X
 
 ### Problem to be solved
