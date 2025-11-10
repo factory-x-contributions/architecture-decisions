@@ -13,6 +13,9 @@
 # Macbooks
 **/.DS_STORE
 
+# Docusaurus
+**/.docusaurus/
+
 # Generated files
 .idea/**/contentModel.xml
 
