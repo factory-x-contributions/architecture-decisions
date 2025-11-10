@@ -1,8 +1,5 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 
-// README einfügen auf Toplevel
-// ADRs sollen Toplevel -> nicht als Unterordner
-// Ideal : Ein Folder mit Website, Ein Folder für Hercules usw. 
 // https://github.com/eclipse-tractusx/tractusx-edc/blob/main/.github/dependabot.yml
 
 /** @type {import('@docusaurus/types').Config} */
@@ -11,15 +8,15 @@ const config = {
   tagline: 'We are creating an open and collaborative digital ecosystem for factory outfitters and operators, built on the foundations of Catena‑X and the principles of Plattform Industrie 4.0.',
   favicon: 'https://factory-x.org/wp-content/uploads//factory-x-logo.svg',
   baseUrl: '/',
-  url: 'https://factory-x-contributions.github.io',
+  url: 'https://janiskre.github.io',
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
   future: {
     v4: true,
   },
 
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'janiskre', 
+  projectName: 'architecture-decisions', 
 
   i18n: {
     defaultLocale: 'en',
