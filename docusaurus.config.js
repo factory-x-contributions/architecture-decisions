@@ -64,7 +64,7 @@ const config = {
           {to: 'docs/orion/orion_placeholder', label: 'Orion', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/factory-x-contributions',
+            href: 'https://github.com/factory-x-contributions/architecture-decisions',
             label: 'GitHub',
             position: 'right',
           },
@@ -78,6 +78,14 @@ const config = {
               {
                 label: 'Hercules',
                 to: 'docs/hercules/adr002-authorization-discovery/',
+              },
+              {
+                label: 'Leo',
+                to: 'docs/leo/leo_placeholder',
+              },
+              {
+                label: 'Orion',
+                to: 'docs/orion/orion_placeholder',
               },
             ],
           },
