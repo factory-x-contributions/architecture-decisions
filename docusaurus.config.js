@@ -64,7 +64,11 @@ const config = {
           {to: 'docs/orion/orion_placeholder', label: 'Orion', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
           {
+<<<<<<< HEAD
             href: 'https://github.com/factory-x-contributions',
+=======
+            href: 'https://github.com/factory-x-contributions/architecture-decisions',
+>>>>>>> origin/main
             label: 'GitHub',
             position: 'right',
           },
@@ -79,6 +83,17 @@ const config = {
                 label: 'Hercules',
                 to: 'docs/hercules/adr002-authorization-discovery/',
               },
+<<<<<<< HEAD
+=======
+              {
+                label: 'Leo',
+                to: 'docs/leo/leo_placeholder',
+              },
+              {
+                label: 'Orion',
+                to: 'docs/orion/orion_placeholder',
+              },
+>>>>>>> origin/main
             ],
           },
           {
