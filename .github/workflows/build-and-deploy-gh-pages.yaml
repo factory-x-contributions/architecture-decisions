@@ -1,20 +1,22 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy Docusaurus
 
 on:
   push:
     branches:
       - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
-    name: Build Docusaurus
+  # Job 1: PR-Build-Check (only with Pull Requests)
+  verify-build:
+    if: ${{ github.event_name == 'pull_request' }}
+    name: Verify website build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -22,6 +24,28 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Build website (fast mode)
+        run: npm run build -- --skip-minify
+
+  # Job 2: Build for Deployment (only with Push)
+  build-and-deploy:
+    if: ${{ github.event_name == 'push' }}
+    name: Build and Upload Artifact
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Build website
         run: npm run build
 
@@ -30,21 +54,18 @@ jobs:
         with:
           path: build
 
+  # Job 3: Deployment to GitHub Pages
   deploy:
+    if: ${{ github.event_name == 'push' }}
+    needs: build-and-deploy
     name: Deploy to GitHub Pages
-    needs: build
-
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    runs-on: ubuntu-latest
     permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
-
-    # Deploy to the github-pages environment
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
