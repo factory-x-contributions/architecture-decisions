@@ -115,8 +115,8 @@ Clients authenticate using username/password provisioned in the broker. Credenti
 ### Links to additional explanations, further material, and references
 
 Related ADRs:
-- ADR 003 – Authentication for Dataspace Participants
-- ADR 011 – Eventing with AAS payloads
+- [ADR 003](../adr003-authentication/README.md) – Authentication for Dataspace Participants
+- [ADR 011](../adr011-eventing-with-aas-payloads/README.md) – Eventing with AAS payloads
 
 Related Requirements:
 - [REQ #13 (p. 34)](https://factory-x.org/wp-content/uploads/Requirements-UseCases-1-19.pdf)
