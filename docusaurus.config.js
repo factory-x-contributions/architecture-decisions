@@ -1,6 +1,6 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 
-const organizationName = "janiskre";
+const organizationName = "factory-x-contributions";
 const projectName = "architecture-decisions";
 
 /** @type {import('@docusaurus/types').Config} */
@@ -79,6 +79,14 @@ const config = {
                 label: 'Hercules',
                 to: 'docs/hercules/adr002-authorization-discovery/',
               },
+              {
+                label: 'Leo',
+                to: 'docs/leo/leo_placeholder',
+              },
+              {
+                label: 'Orion',
+                to: 'docs/orion/orion_placeholder',
+              },
             ],
           },
           {
@@ -112,7 +120,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Factory-X, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Factory-X - Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
