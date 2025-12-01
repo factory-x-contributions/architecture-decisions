@@ -2,8 +2,6 @@
 title: ADR 011 – Eventing with AAS Payloads
 ---
 
-## ADR 011 - Eventing with AAS Payloads
-
 ### Problem to be solved
 
 The AAS API (as specified
