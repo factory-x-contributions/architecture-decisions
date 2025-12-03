@@ -1,4 +1,6 @@
-## ADR 012 - MQTT over DSP
+---
+title: ADR 012 – MQTT over DSP
+---
 
 ### Problem to be solved
 
