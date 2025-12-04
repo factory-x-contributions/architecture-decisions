@@ -1,5 +1,8 @@
 ---
+id: fx_adr101
 title: ADR 101 – The Train Health API
+date: 2025-12-03
+tags: [architecture_decision_records, API]
 ---
 
 > This is an example of a fictional Use-Case ADR in Factory-X. The structure should be reused.
