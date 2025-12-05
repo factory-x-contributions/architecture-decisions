@@ -2,7 +2,7 @@
 id: fx_adr002
 title: ADR 002 – Cross-Company Authorization and Discovery
 date: 2025-08-21
-tags: [architecture_decision_records, API]
+tags: [architecture_decision_records, network_adr, security]
 ---
 
 ### Problem to be solved

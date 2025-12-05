@@ -2,7 +2,7 @@
 id: fx_adr008
 title: ADR 008 – Asset Administration Shell Profile for Factory-X
 date: 2025-08-28
-tags: [architecture_decision_records, API]
+tags: [architecture_decision_records, network_adr, api]
 ---
 
 ### Problem to be solved
