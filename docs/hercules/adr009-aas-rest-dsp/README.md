@@ -1,5 +1,8 @@
 ---
+id: fx_adr009
 title: ADR 009 – Discovery of AAS Services via DSP
+date: 2025-10-24
+tags: [architecture_decision_records, network_adr, discovery]
 ---
 
 ### Problem to be solved
