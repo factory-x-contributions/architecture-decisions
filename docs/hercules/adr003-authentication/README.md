@@ -17,8 +17,10 @@ as roles).
 ### Solution description (normative)
 
 Every participant MUST claim a did according to the did:web method [1,2]. 
+
 Every participant MUST expose a did document indicating public keys and services according to Decentralized Claims
 Protocol v1.0 [4] chapters 4.3.3, 5.2, 5.4.3 and 6.2.
+
 Every participant MUST present its credentials according to Decentralized Claims Protocol's Verifiable Presentation
 Protocol in the profile `vc11-sl2021/jwt`.
 
