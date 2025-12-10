@@ -1,6 +1,7 @@
 ---
 id: fx_adr009
 title: ADR 009 – Discovery of AAS Services via DSP
+date: 2025-10-24
 tags: [architecture_decision_records, network_adr, discovery]
 ---
 
@@ -46,7 +47,7 @@ catalog automatically) can be developed.
 ### Alternatives evaluated
 
 In the context of the existing [ADRs 002](../adr002-authorization-discovery/README.md) and [ADR 008](../adr008-aas-profile/README.md) -
-the overall setup is pretty much predetermined. The metadata annotations of the Dataset objects could theoretically
+the overall setup is pretty much predetermined. The metadata annotations of the Dataset objects could theoretically 
 reflect the response from a Digital Twin Repository’s `/description` endpoint.
 This can be added later in a compatible fashion in there’s a strong preference for it. The Catena-X annotation is
 adopted from [CX-0002](https://catenax-ev.github.io/docs/next/standards/CX-0002-DigitalTwinsInCatenaX) to maintain
@@ -61,4 +62,4 @@ Twin Registry pretty much useless.
 
 This ADR is a subset of [CX-0002](https://catenax-ev.github.io/docs/next/standards/CX-0002-DigitalTwinsInCatenaX) and
 the [Digital Twin Kit](https://eclipse-tractusx.github.io/docs-kits/next/kits/digital-twin-kit/software-development-view/).
-The latter has diagrams, explanations and motivations sketched out in more detail.
+The latter has diagrams, explanations and motivations sketched out.

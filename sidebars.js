@@ -10,7 +10,7 @@ const sidebars = {
         type: 'generated-index',
         title: 'Hercules Architecture Decisions',
         description: 'Architecture decisions related to the Hercules configuration.',
-        slug: '/hercules',
+        slug: 'docs/hercules',
       },
       items: [
         {
