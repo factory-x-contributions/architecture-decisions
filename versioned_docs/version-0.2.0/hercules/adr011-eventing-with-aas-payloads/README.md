@@ -1,6 +1,7 @@
 ---
 id: fx_adr011
 title: ADR 011 – Eventing with AAS Payloads
+date: 2025-11-21
 tags: [architecture_decision_records, network_adr, eventing]
 ---
 

@@ -1,6 +1,7 @@
 ---
 id: fx_adr003
 title: ADR 003 – Authentication for Dataspace
+date: 2025-08-21
 tags: [architecture_decision_records, network_adr, security]
 ---
 

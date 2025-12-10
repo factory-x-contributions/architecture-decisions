@@ -19,3 +19,9 @@
   --ifm-color-primary-lightest: #D8E54D;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Remove version in the single page (just drop-down menu) */
+.theme-doc-version-badge {
+  display: none !important;
+}
+
