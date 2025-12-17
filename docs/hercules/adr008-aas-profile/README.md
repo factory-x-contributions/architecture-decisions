@@ -1,13 +1,13 @@
 ---
-id: fx_adr008
-title: ADR 008 – Asset Administration Shell Profile for Factory-X
-date: 2025-08-28
+id: fx_adr008_0.2.0
+title: ADR 008 – Asset Administration Shell Profile for Factory-X, version 0.2.0
+date: 2025-12-10
 tags: [architecture_decision_records, network_adr, api]
 ---
 
 ### Problem to be solved
 
-The Asset Administration Shell API-specification (IDTA 01002-3-0) defines a discovery and retrieval process for
+The Asset Administration Shell API-specification (IDTA 01002-3-0-3) defines a discovery and retrieval process for
 Submodels that makes life hard for Data Providers and Data Consumers. In the worst case, a Data Consumer must have prior
 knowledge about:
 
@@ -30,18 +30,26 @@ The complexity grows exponentially with each separately deployed service and lin
 
 ![aas-status-quo.png](resources/aas-status-quo.png)
 
-### Solution description
+### Solution description (normative)
 
-By making more optional properties in the AAS specification mandatory, the complexity can be drastically reduced. The
-ADR mandates the Data Provider to:
+A Data Provider provisioning data in the Asset Administration Shell format MUST:
 
-1. provide all `SubmodelDescriptor` objects as part of the `AssetAdministrationShellDescriptor` objects via the
+1. comply with version IDTA-01002-3-0-3 for the selected interfaces and specializations defined below.
+2. expose their Submodels according to the HTTP binding of the [`GetSubmodel` interface](https://admin-shell.io/aas/API/GetSubmodel/3/0).
+3. provide all `SubmodelDescriptor` objects as part of the `AssetAdministrationShellDescriptor` objects via the
 AssetAdministratonShellRegistryServiceSpecification-SSP2.
-2. provide `semanticId` as part of the `SubmodelDescriptor` object
-3. provide all `Endpoint` objects as part of the `SubmodelDescriptor` objects linking to an API serving the 
+4. provide `semanticId` as part of the `SubmodelDescriptor` object.
+5. provide all `Endpoint` objects as part of the `SubmodelDescriptor` objects linking to an API serving the 
 `Submodel` interface.
-4. serve the APIs of the AssetAdministrationShellRegistryServiceSpecification-SSP2 [1] and the
+6. serve the APIs of the AssetAdministrationShellRegistryServiceSpecification-SSP2 [1] and the
 DiscoveryServiceSpecification-SSP1 [2] from a common URL-path.
+
+### Context
+
+By making more optional properties in the AAS specification mandatory, the complexity can be drastically reduced.
+
+Recurring only to the interface definition in point 1 of the solution description gives Data Providers the flexibility 
+to use AAS Repositories, Submodel Repositories or any other service implementing the operation.
 
 This results in reduced complexity for Data Provider and Data Consumer alike. A client that makes a certain set of
 different assumptions may not be compatible with Data Providers adhering to this ADR. Same holds true for clients
