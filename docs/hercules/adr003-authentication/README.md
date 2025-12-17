@@ -1,6 +1,6 @@
 ---
-id: fx_adr003
-title: ADR 003 – Authentication for Dataspace
+id: fx_adr003_0.2.0
+title: ADR 003 – Authentication for Dataspaces, version 0.2.0
 date: 2025-08-21
 tags: [architecture_decision_records, network_adr, security]
 ---
@@ -14,15 +14,22 @@ R2) integrate in ecosystems with multiple independent sources of trust,
 R3) access, parse and understand claims made about a participant based on an established common set of attributes (such
 as roles).
 
-### Solution description
+### Solution description (normative)
 
-S1) identification via DIDs, public key resolution via DID documents and did:web [1,2]
+Every participant MUST claim a did according to the did:web method [1,2]. 
 
-S2) leave it up to each participant what issuers to trust for what claims.
+Every participant MUST expose a did document indicating public keys and services according to Decentralized Claims
+Protocol v1.0 [4] chapters 4.3.3, 5.2, 5.4.3 and 6.2.
 
-S3) Design a common set of Factory-X credential claims to be exchanged, extending the W3C Verifiable Credential (VC)
-Standard [3], exchanged via the Verifiable Presentation Protocol that is part of the Decentralized Claims Protocol [4].
+Every participant MUST present its credentials according to Decentralized Claims Protocol's Verifiable Presentation
+Protocol in the profile `vc11-sl2021/jwt`.
 
+### Context
+
+Each participant is free to trust the Verifiable Credential issuers of their choice. The protocol stack unifies the
+possibility of peer-to-peer relationships and the integration of a third-party source of trust. This ADR leaves open the
+design of a common set of Factory-X credential claims to be exchanged, extending the W3C Verifiable Credential (VC)
+Standard [3]
 
 ### Expected business consequences
 
