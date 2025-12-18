@@ -24,13 +24,13 @@ that an HTTP request to the `endpoint` may succeed. The `endpointType` property 
 `https://w3id.org/idsa/v4.1/HTTP`. The following `endpointProperties` are to be added to the object as specified in the
 table below:
 
-| Name                                             |          | description                                                                                                                                                   |
-|--------------------------------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `https://w3id.org/edc/v0.0.1/ns/authorization`   | REQUIRED | The access token to access data. To be included in the `Authorization` header.                                                                                |
-| `https://w3id.org/edc/v0.0.1/ns/authType`        | REQUIRED | Prefix for the `Authorization` header's content.                                                                                                              |
-| `https://w3id.org/tractusx/auth/refreshEndpoint` | REQUIRED | Endpoint to refresh the access token using the `refreshToken`. It behaves as defined in [RFC6749](#rfc-6749) section 6 using an STS-token for authentication. |
-| `https://w3id.org/tractusx/auth/refreshToken`    | REQUIRED | The refresh token to present to the `refreshEndpoint` in conjunction with the old access token.                                                               |
-| `https://w3id.org/tractusx/auth/expiresIn`       | REQUIRED | Time to live for the access token after issuance.                                                                                                             |
+| Name                                             |          | description                                                                                                                                          |
+|--------------------------------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `https://w3id.org/edc/v0.0.1/ns/authorization`   | REQUIRED | The access token to access data. To be included in the `Authorization` header.                                                                       |
+| `https://w3id.org/edc/v0.0.1/ns/authType`        | REQUIRED | Prefix for the `Authorization` header's content.                                                                                                     |
+| `https://w3id.org/tractusx/auth/refreshEndpoint` | REQUIRED | Endpoint to refresh the access token using the `refreshToken`. It behaves as defined in RFC6749 [1] section 6 using an STS-token for authentication. |
+| `https://w3id.org/tractusx/auth/refreshToken`    | REQUIRED | The refresh token to present to the `refreshEndpoint` in conjunction with the old access token.                                                      |
+| `https://w3id.org/tractusx/auth/expiresIn`       | REQUIRED | Time to live for the access token after issuance.                                                                                                    |
 
 ### Context
 
@@ -70,3 +70,4 @@ model and authentication mechanisms
 ### References
 
 [1] https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol
+[2] https://www.rfc-editor.org/rfc/rfc6749.html
