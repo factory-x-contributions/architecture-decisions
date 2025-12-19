@@ -1,7 +1,8 @@
 ---
 id: fx_adr009
-title: ADR 009 – Discovery of AAS Services via DSP
-date: 2025-10-24
+title: ADR 009 – Discovery of AAS Services via DSP Version 0.2.0
+sidebar_label: ADR 009 – AAS Discovery via DSP
+description: ADR 009 describes how Asset Administration Shell services can be discovered via the Dataspace Protocol.
 tags: [architecture_decision_records, network_adr, discovery]
 ---
 

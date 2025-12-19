@@ -1,7 +1,8 @@
 ---
-id: fx_adr008_0.2.0
-title: ADR 008 – Asset Administration Shell Profile for Factory-X, version 0.2.0
-date: 2025-12-10
+id: fx_adr008
+title: ADR 008 – Asset Administration Shell Profile for Factory-X Version 0.2.0
+sidebar_label: ADR 008 – AAS Profile for Factory-X
+description: ADR 008 describes a profile for Asset Administration Shell implementations in Factory-X dataspace.
 tags: [architecture_decision_records, network_adr, api]
 ---
 

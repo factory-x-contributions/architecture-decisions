@@ -1,7 +1,8 @@
 ---
-id: fx_adr003_0.2.0
-title: ADR 003 – Authentication for Dataspaces, version 0.2.0
-date: 2025-08-21
+id: fx_adr003
+title: ADR 003 – Authentication for Dataspaces Version 0.2.0
+sidebar_label: ADR 003 – Authentication for Dataspaces
+description: ADR 003 describes the authentication mechanism for Factory-X dataspace participants.
 tags: [architecture_decision_records, network_adr, security]
 ---
 

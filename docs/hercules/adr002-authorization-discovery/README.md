@@ -1,7 +1,8 @@
 ---
-id: fx_adr002_0.2.0
-title: ADR 002 – Cross-Company Authorization and Discovery - version 0.2.0
-date: 2025-08-21
+id: fx_adr002
+title: ADR 002 – Cross-Company Authorization and Discovery Version 0.2.0
+sidebar_label: ADR 002 – Cross-Company Authorization and Discovery
+description: ADR 002 describes the approach for Cross-Company Authorization and Discovery based on the Dataspace Protocol (DSP).
 tags: [architecture_decision_records, network_adr, security]
 ---
 

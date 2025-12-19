@@ -1,7 +1,8 @@
 ---
 id: fx_adr011
 title: ADR 011 – Eventing with AAS Payloads
-date: 2025-11-21
+sidebar_label: ADR 011 – Eventing with AAS Payloads
+description: ADR 011 describes how Asset Administration Shell payloads can be used in an eventing context.
 tags: [architecture_decision_records, network_adr, eventing]
 ---
 

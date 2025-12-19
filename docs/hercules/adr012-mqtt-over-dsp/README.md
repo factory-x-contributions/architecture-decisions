@@ -1,5 +1,9 @@
 ---
+id: fx_adr012
 title: ADR 012 – MQTT over DSP
+sidebar_label: ADR 012 – MQTT over DSP
+description: ADR 012 describes support for MQTT as an asynchronous, event-driven data exchange protocol in the Factory-X dataspace.
+tags: [architecture_decision_records, network_adr, eventing]
 ---
 
 ### Problem to be solved
