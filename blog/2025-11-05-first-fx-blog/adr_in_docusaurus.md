@@ -1,6 +1,6 @@
 ---
 slug: FX-ADR in Docusaurus
-title: Factory-X Architecture Decision Records in Docusaurus
+title: Architecture Decision Records in Docusaurus
 authors: [janiskretschmann]
 tags: [architecture_decision_records, factory-x, docusaurus]
 ---
