@@ -1,6 +1,6 @@
 ---
 slug: Release 2025-12
-title: Announcing Release 2025-1
+title: Announcing Release 2025-12
 authors: [ arnoweiss ]
 tags: [ architecture_decision_records, factory-x ]
 ---
