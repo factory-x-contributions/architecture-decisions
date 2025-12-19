@@ -36,7 +36,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           versions: {
             current: {
-              label: 'Canary  🚧 ',
+              label: 'Upcoming  🤫🚧 ',
             },
           }
         },

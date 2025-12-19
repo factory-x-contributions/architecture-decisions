@@ -8,30 +8,30 @@ const ADR_SLUG = 'hercules/adr002-authorization-discovery/';
 
 // Helpers to build version-aware routes:
 function linkToVersionADR(version, index) {
-  return index === 0 ? `/docs/${ADR_SLUG}` : `/docs/${version}/${ADR_SLUG}`;
+  return index === 0 ? `/docs/${ADR_SLUG}` : `/blog/Release%20${ADR_SLUG}`;
 }
 function linkToNextADR() {
   return `/docs/next/${ADR_SLUG}`;
 }
 
-export default function VersionsPage() {
+export default function ReleasesPage() {
   const latest = versions && versions.length ? versions[0] : null;
   const pastVersions = versions && versions.length > 1 ? versions.slice(1) : [];
 
   return (
-    <Layout title="Versions Overview" description="All documentation versions for this site">
+    <Layout title="Release Overview" description="All documentation releases for this site">
       <main style={{ maxWidth: 1000, margin: '0 auto', padding: '2rem 1rem' }}>
         {/* Header */}
         <header style={{ marginBottom: '2rem' }}>
-          <h1 style={{ margin: 0 }}>Versions Overview</h1>
+          <h1 style={{ margin: 0 }}>Releases Overview</h1>
           <p style={{ marginTop: '0.5rem', color: 'var(--ifm-color-emphasis-700)' }}>
-            Browse all ADR releases and the canary ADR's.
+            Browse all ADR releases and view current work on ADRs.
           </p>
         </header>
 
-        {/* Current versions (Current + Latest) */}
+        {/* Current releases (Current + Latest) */}
         <section style={{ marginBottom: '2.5rem' }}>
-          <h2>Current versions</h2>
+          <h2>Current releases</h2>
           <div
             style={{
               display: 'flex',
@@ -56,7 +56,7 @@ export default function VersionsPage() {
                     </p>
                   </>
                 ) : (
-                  <p>No released versions yet.</p>
+                  <p>No released releases yet.</p>
                 )}
               </div>
               <div className="card__footer">
@@ -77,7 +77,7 @@ export default function VersionsPage() {
             {/* Next */}
             <div className="card" style={{ flex: '1 1 280px' }}>
               <div className="card__header">
-                <h3 style={{ marginBottom: 0 }}>Canary 🚧</h3>
+                <h3 style={{ marginBottom: 0 }}>Upcoming 🤫🚧</h3>
               </div>
               <div className="card__body">
                 <p style={{ marginBottom: '0.5rem' }}>
@@ -98,11 +98,11 @@ export default function VersionsPage() {
           </div>
         </section>
 
-        {/* Past versions */}
+        {/* Past releases */}
         <section>
-          <h2>Past versions</h2>
+          <h2>Past releases</h2>
           {pastVersions.length === 0 ? (
-            <p>No past versions yet.</p>
+            <p>No past releases yet.</p>
           ) : (
             <div style={{ marginTop: '1rem', overflowX: 'auto' }}>
               <table className="table">
