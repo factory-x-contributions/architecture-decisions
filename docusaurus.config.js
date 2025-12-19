@@ -34,6 +34,11 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          versions: {
+            current: {
+              label: 'Canary  🚧 ',
+            },
+          }
         },
         blog: {
           showReadingTime: true,
@@ -63,6 +68,15 @@ const config = {
           {to: 'docs/leo/leo_placeholder', label: 'Leo', position: 'left'},
           {to: 'docs/orion/orion_placeholder', label: 'Orion', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownActiveClassDisabled: true, 
+            dropdownItemsAfter: [
+              { to: '/versions', label: 'All Versions' },
+            ],
+          },
+
           {
             href: 'https://github.com/factory-x-contributions',
             label: 'GitHub',
