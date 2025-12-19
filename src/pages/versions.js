@@ -19,11 +19,11 @@ export default function VersionsPage() {
   const pastVersions = versions && versions.length > 1 ? versions.slice(1) : [];
 
   return (
-    <Layout title="Versions" description="All documentation versions for this site">
+    <Layout title="Versions Overview" description="All documentation versions for this site">
       <main style={{ maxWidth: 1000, margin: '0 auto', padding: '2rem 1rem' }}>
         {/* Header */}
         <header style={{ marginBottom: '2rem' }}>
-          <h1 style={{ margin: 0 }}>Versions</h1>
+          <h1 style={{ margin: 0 }}>Versions Overview</h1>
           <p style={{ marginTop: '0.5rem', color: 'var(--ifm-color-emphasis-700)' }}>
             Browse all ADR releases and the canary ADR's.
           </p>
