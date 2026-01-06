@@ -7,7 +7,7 @@ tags: [ architecture_decision_records, factory-x ]
 
 <!-- truncate -->
 
-This [set of webpages](http://localhost:3000/architecture-decisions/) specifies the first release of the Factory-X data ecosystem.
+This [set of webpages](https://factory-x-contributions.github.io/architecture-decisions/docs/hercules/adr002-authorization-discovery) specifies the first release of the Factory-X data ecosystem.
 
 ### On Releases
 
