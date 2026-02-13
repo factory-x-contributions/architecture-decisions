@@ -4,7 +4,7 @@ import Link from '@docusaurus/Link';
 import versions from '../../versions.json';
 
 // Set the ADR slug you want to open for each version.
-const ADR_SLUG = 'hercules/adr002-authorization-discovery/';
+const ADR_SLUG = 'hercules_network_adr/adr002-authorization-discovery/';
 
 // Helpers to build version-aware routes:
 function linkToVersionADR(version, index) {
