@@ -18,7 +18,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/hercules/adr002-authorization-discovery/">
+            to="/docs/hercules_network_adr/adr002-authorization-discovery/">
             📄  Architecture Decision Records
           </Link>
         </div>

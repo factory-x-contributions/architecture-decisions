@@ -1,6 +1,6 @@
 architecture_decision_records:
   label: Architecture Decision Records
-  permalink: /docs/hercules/adr002-authorization-discovery/
+  permalink: /docs/hercules_network_adr/adr002-authorization-discovery/
   description: These are the official Factory-X Architecture Decision Records.
 
 factory-x:

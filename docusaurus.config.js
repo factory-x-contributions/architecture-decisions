@@ -64,9 +64,12 @@ const config = {
           src: 'https://factory-x.org/wp-content/uploads//factory-x-logo.svg',
         },
         items: [
-          {to: 'docs/hercules/adr002-authorization-discovery/', label: 'Hercules', position: 'left'},
-          {to: 'docs/leo/leo_placeholder', label: 'Leo', position: 'left'},
-          {to: 'docs/orion/orion_placeholder', label: 'Orion', position: 'left'},
+          {type: 'dropdown', label: 'Hercules', position: 'left', items: [
+            {to: '/docs/hercules_network_adr', label: 'Network ADR'},
+            {to: '/docs/hercules_use_case_adr', label: 'Use Case ADR'},
+          ]},
+          {type: 'docSidebar', label: 'Leo', position: 'left', sidebarId: 'leo_sidebar'},
+          {type: 'docSidebar', label: 'Orion', position: 'left', sidebarId: 'orion_sidebar'},
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             type: 'docsVersionDropdown',
@@ -91,7 +94,7 @@ const config = {
             items: [
               {
                 label: 'Hercules',
-                to: 'docs/hercules/adr002-authorization-discovery/',
+                to: 'docs/hercules_network_adr/adr002-authorization-discovery/',
               },
               {
                 label: 'Leo',
