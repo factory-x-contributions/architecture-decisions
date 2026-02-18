@@ -12,12 +12,11 @@ This Architecture Decision Record (ADR) provides normative guidance for the use 
 
 ## Roles
 
-- **Supplier** acts as _Data Provider_
-- **Platform application** acts as _Data Consumer_
+- **Supplier** acts as _Data Provider_. A supplier is an organization, e.g., an SME, that provides manufacturing services to buyers. Suppliers can offer their services via platform applications.
+- **Platform application** acts as _Data Consumer_. A platform application is a MaaS cloud platform that acts as a middleware between buyers and suppliers by aggregating the manufacturing as a service offering of multiple suppliers and offering them to interested buyers. Suppliers can register at platform applications and publish their manufacturing capabilities there. Buyers can search for suppliers that match their manufacturing request at platform applications.
+- **Buyer** also acts as _Data Consumer_. A buyer is an entity, e.g., a company, buying manufacturing services from Suppliers.
 
 ## API Structure
-
-Repository of the Asset Administration Shell Specification IDTA-01002 API: https://github.com/admin-shell-io/aas-specs-api
 
 ### Data Provider
 
@@ -25,10 +24,10 @@ The Data Provider MUST expose the endpoints according to the following Architect
 
 | Architecture Decision Record (ADR)            | Version         | Link                      | 
 | ------------------- | ------------ | ------------------------------------------------------ | 
-| ADR 002 – Cross-Company Authorization and Discovery Version 0.2.0        | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules/adr002-authorization-discovery | 
-| ADR 003 – Authentication for Dataspaces Version 0.2.0                    | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules/adr003-authentication | 
-| ADR 008 – Asset Administration Shell Profile for Factory-X Version 0.2.0 | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules/adr008-aas-profile | 
-| ADR 009 – Discovery of AAS Services via DSP Version 0.2.0                | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules/adr009-aas-rest-dsp | 
+| ADR 002 – Cross-Company Authorization and Discovery Version 0.2.0        | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr002-authorization-discovery | 
+| ADR 003 – Authentication for Dataspaces Version 0.2.0                    | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr003-authentication | 
+| ADR 008 – Asset Administration Shell Profile for Factory-X Version 0.2.0 | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr008-aas-profile | 
+| ADR 009 – Discovery of AAS Services via DSP Version 0.2.0                | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr009-aas-rest-dsp | 
 | 
 
 ### Data Consumer
@@ -37,39 +36,41 @@ The Data Consumer MUST expose the endpoints according to the following Architect
 
 | Architecture Decision Record (ADR)            | Version         | Link                      | 
 | ------------------- | ------------ | ------------------------------------------------------ | 
-| ADR 002 – Cross-Company Authorization and Discovery Version 0.2.0        | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules/adr002-authorization-discovery | 
-| ADR 003 – Authentication for Dataspaces Version 0.2.0                    | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules/adr003-authentication | 
-| ADR 009 – Discovery of AAS Services via DSP Version 0.2.0                | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules/adr009-aas-rest-dsp | 
+| ADR 002 – Cross-Company Authorization and Discovery Version 0.2.0        | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr002-authorization-discovery | 
+| ADR 003 – Authentication for Dataspaces Version 0.2.0                    | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr003-authentication | 
 | 
 
 ## Data Models
 
-The `Asset` can be the instance of a company, factory, machine or a product.
+The `Asset` can be the instance of a company, factory, machine, product or a software application.
 
 ### Submodels
 
-The following submodels may be used for the Manufacturing as a Service use case.
+The following submodels may be used for the Manufacturing as a Service use case. In the MaaS use-case, there are three scenarios which each require a different set of submodels. Additionally, non-required submodels may be used in all scenarios.
 
-| Standard                   | Version | Reference                                                                                                                   | Affiliation   |
-| -------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------- | -------- |
-| Digital Nameplate for industrial equipment        | 3.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Digital%20nameplate/3/0)  | Company, Factory, Machine, Product |
-| Contact Information        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Contact%20Information/1/0)  | Company, Factory, Machine |
-| Generic Frame for Technical Data for Industrial Equipment in Manufacturing        | 2.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Technical_Data/2/0)  | Company, Factory, Machine, Product |
-| Data Model for Asset Location        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Data%20Model%20for%20Asset%20Location/1/0)  | Factory, Machine |
-| Asset Interface Description        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Asset%20Interfaces%20Description/1/0)  | Asset |
-| Asset Interfaces Mapping Configuration        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Asset%20Interfaces%20Mapping%20Configuration/1/0)  | Asset |
-| Time Series Data        | 1.1  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Time%20Series%20Data/1/1)  | Machine |
-| Hierarchical Structures enabling Bills of Material        | 1.1  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Hierarchical%20Structures%20enabling%20Bills%20of%20Material/1/1)  | Company, Factory, Machine, Product |
-| Capability Description        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/development/Capability/1/0)  | Factory, Machine, Product |
-| Production Calendar        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Production%20Calendar/1/0)  | Machine |
-| Handover Documentation        | 2.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Handover%20Documentation/2/0)  | Factory, Machine, Product |
-| Carbon Footprint        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Carbon%20Footprint/1/0)  | Product |
-| Quality Control for Machining       | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Quality%20Control%20for%20Machining/1/0)  | Product |
-| Submodel Purchase Order       | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Purchase%20Order/1/0)  | Product |
+- **Scenario 1**: Capability Notification: Suppliers provide their machine capabilities in a standardized and automated manner so that platforms can use them for capability-based matching.
+- **Scenario 2**: Request, Offer, Order: Geometry and feature recognition are used to automatically generate an AAS (including a purchase order submodel), enabling suppliers to quickly calculate prices and delivery times and submit quotes for order placement.
+- **Scenario 3**: Order Execution and Quality Control: Orders are executed automatically using AI-supported feature recognition and CAM automation, while the AAS submodel “Quality Control for Machining” translates quality requirements into inspection and machine programs and monitors production resulting in a quality report.
+
+
+| Standard                   | Version | Reference                                                                                                                   | Affiliation   | Required in scenario   |
+| -------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
+| Digital Nameplate for industrial equipment        | 3.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Digital%20nameplate/3/0)  | Company, Factory, Machine, Product | Scenario 1, 2, 3 |
+| Capability Description        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/development/Capability/1/0)  | Factory, Machine, Product | Scenario 1 |
+| Purchase Order       | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Purchase%20Order/1/0)  | Product | Scenario 2 |
+| Quality Control for Machining       | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Quality%20Control%20for%20Machining/1/0)  | Product | Scenario 3 |
+| Handover Documentation        | 2.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Handover%20Documentation/2/0)  | Factory, Machine, Product | Scenario 2, 3 |
+| Generic Frame for Technical Data for Industrial Equipment in Manufacturing        | 2.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Technical_Data/2/0)  | Company, Factory, Machine, Product | Scenario 2, 3 |
+| Contact Information        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Contact%20Information/1/0)  | Company, Factory, Machine | optional |
+| Data Model for Asset Location        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Data%20Model%20for%20Asset%20Location/1/0)  | Factory, Machine | optional |
+| Asset Interface Description        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Asset%20Interfaces%20Description/1/0)  | Asset | optional |
+| Asset Interfaces Mapping Configuration        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Asset%20Interfaces%20Mapping%20Configuration/1/0)  | Asset | optional |
+| Time Series Data        | 1.1  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Time%20Series%20Data/1/1)  | Machine | optional |
+| Hierarchical Structures enabling Bills of Material        | 1.1  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Hierarchical%20Structures%20enabling%20Bills%20of%20Material/1/1)  | Company, Factory, Machine, Product | optional |
+| Production Calendar        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Production%20Calendar/1/0)  | Machine | optional |
+| Carbon Footprint        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Carbon%20Footprint/1/0)  | Product | optional |
 
 
 ## Authentication and Authorization
 
-The Data Provider MUST expose the APIs mandated in ADR-002 and ADR-003. AAS resources MUST be exposed according to ADR-008 and ADR-009.
-
-The Dataspace Connector implementation is not prescribed; any connector compliant with the Dataspace Protocol (DSP) and Decentralized Claims Protocol (DCP) specification MAY be used.
+Participants must comply to authentication and authorization defined ADR-002 and ADR-003.
