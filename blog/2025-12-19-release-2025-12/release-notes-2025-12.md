@@ -3,6 +3,7 @@ slug: Release 2025-12
 title: Announcing Release 2025-12
 authors: [ arnoweiss ]
 tags: [ architecture_decision_records, factory-x ]
+description: The first release of the Factory-X data ecosystem, bundling Architecture Decision Records for MX-Port Hercules with conforming implementations and adoption guidance.
 ---
 
 <!-- truncate -->
