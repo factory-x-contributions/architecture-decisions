@@ -49,7 +49,7 @@ The Data Consumer MUST expose the following public endpoints:
 > **Note:** Internal management endpoints are implementation-specific and not part of this specification.
 ### Forecast Service API
 
-The Forecast Service MUST be implemented according to the [OpenAPI specification](forecast-service-openapi.yaml).
+The Forecast Service MUST be implemented according to the [OpenAPI specification](./resources/forecast-service-openapi.yaml).
 ## Data Models
 
 The `Asset` is the instance of a time series set of e.g. an energy meter.
