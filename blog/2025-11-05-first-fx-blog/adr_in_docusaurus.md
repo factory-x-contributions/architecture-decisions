@@ -3,10 +3,12 @@ slug: FX-ADR in Docusaurus
 title: Architecture Decision Records in Docusaurus
 authors: [ janiskretschmann ]
 tags: [ architecture_decision_records, factory-x, docusaurus ]
-description: Factory‑X's Architecture Decision Records are now published on a static website, providing a clear, searchable format organized by MX port configuration.
 ---
 
-<!-- truncate -->
+Factory‑X's Architecture Decision Records are now published on a static website, providing a clear, searchable format
+organized by MX port configuration.
+
+{/* truncate */}
 
 I’m pleased to announce that Factory‑X’s Architecture Decision Records (ADRs) are now published on a static website
 built with the Docusaurus framework. The ADRs are pulled directly from the repository’s .md documents and presented in a

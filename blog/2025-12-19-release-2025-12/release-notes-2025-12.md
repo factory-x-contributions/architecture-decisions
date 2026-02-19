@@ -3,25 +3,26 @@ slug: Release 2025-12
 title: Announcing Release 2025-12
 authors: [ arnoweiss ]
 tags: [ architecture_decision_records, factory-x ]
-description: The first release of the Factory-X data ecosystem, bundling Architecture Decision Records for MX-Port Hercules with conforming implementations and adoption guidance.
 ---
 
-<!-- truncate -->
+This [set of webpages](https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr002-authorization-discovery)
+specifies the first release of the Factory-X data ecosystem bundling Architecture Decision Records for MX-Port Hercules
+with conforming implementations and adoption guidance.
 
-This [set of webpages](https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr002-authorization-discovery) specifies the first release of the Factory-X data ecosystem.
+{/* truncate */}
 
 ### On Releases
 
 Like every Dataspace, Factory-X is build on the mutual agreement between participants to expose interfaces accordingly
 to specifications. A release like this one is a snapshot on a timeline of specifications and implementation projects.
 As such, it bundles Factory-X Architecture Decision Records (ADRs) at certain versions with software at certain
-versions. Releases use [CalVer](https://calver.org/#scheme) with YYYY-MM scheme. ADRs use [SemVer](https://semver.org/). 
+versions. Releases use [CalVer](https://calver.org/#scheme) with YYYY-MM scheme. ADRs use [SemVer](https://semver.org/).
 
 ### State of the Spec
 
-In the [MX-Port Concept Paper](https://factory-x.org/wp-content/uploads/MX-Port-Concept-V1.10.pdf) (link opens pdf), 
-Factory-X has promised three separate sets of specifications. The ADRs (published and agreed by the consortium) map to 
-one or more of these three "MX-Port Configurations". All ADRs in the 2025-12 release are published in the context of 
+In the [MX-Port Concept Paper](https://factory-x.org/wp-content/uploads/MX-Port-Concept-V1.10.pdf) (link opens pdf),
+Factory-X has promised three separate sets of specifications. The ADRs (published and agreed by the consortium) map to
+one or more of these three "MX-Port Configurations". All ADRs in the 2025-12 release are published in the context of
 MX-Port "Hercules" that strives for interoperability with the Catena-X Dataspace.
 
 ![2025-12-adrs.svg](../2025-11-05-first-fx-blog/2025-12-adrs.svg)
@@ -31,9 +32,10 @@ underlying technologies (AAS over HTTP and AAS over MQTT) into the extension poi
 
 ### Implementation Report
 
-The Factory-X project collaboratively develops software in the [factory-x-contributions](https://github.com/factory-x-contributions) 
-Github organization. Its purpose is to bridge the gap between paper and runnable code and thus to inform specification 
-activities with the experience gained. The table below only lists the implementations that are driven from the 
+The Factory-X project collaboratively develops software in
+the [factory-x-contributions](https://github.com/factory-x-contributions)
+Github organization. Its purpose is to bridge the gap between paper and runnable code and thus to inform specification
+activities with the experience gained. The table below only lists the implementations that are driven from the
 Factory-X project.
 
 | Conforming Implementation                                                                  | Artifact   | ADRs                                                             | Description                                                                                                                                                                                                            |
