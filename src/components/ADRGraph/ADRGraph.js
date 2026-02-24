@@ -64,30 +64,15 @@ export default function ADRGraph() {
   const [filteredCategories, setFilteredCategories] = useState(['network', 'usecase', 'leo', 'orion']);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
-  const [currentVersion, setCurrentVersion] = useState('current');
+  const [currentVersion, setCurrentVersion] = useState(null);
   const [availableVersions, setAvailableVersions] = useState([]);
   const { colorMode } = useColorMode();
   const location = useLocation();
 
   const baseUrl = useBaseUrl('/');
 
-  // Load available versions from versions.json
-  useEffect(() => {
-    console.log('[ADR Graph] Loading versions from:', `${baseUrl}versions.json`);
-    fetch(`${baseUrl}versions.json`)
-      .then((response) => response.json())
-      .then((versions) => {
-        console.log('[ADR Graph] Available versions:', versions);
-        setAvailableVersions(versions || []);
-      })
-      .catch((error) => {
-        console.error('[ADR Graph] Error loading versions:', error);
-        setAvailableVersions([]);
-      });
-  }, [baseUrl]);
-
   // Get current version from URL parameter or detect from global context
-  const getVersion = useCallback(() => {
+  const getVersion = useCallback((versions = []) => {
     // Check URL parameter first (e.g., /adr-graph?version=2025-12)
     const params = new URLSearchParams(location.search);
     const versionParam = params.get('version');
@@ -105,28 +90,46 @@ export default function ADRGraph() {
       // localStorage might not be available
     }
 
-    // Default to current version
+    // Default to the latest version (first in versions.json), same as Docusaurus navbar
+    if (versions.length > 0) {
+      return versions[0];
+    }
+
+    // Fallback to current version only if no versions available
     return 'current';
   }, [location.search]);
 
-  // Initialize version and listen for changes
+  // Load available versions from versions.json and set initial version
   useEffect(() => {
-    const version = getVersion();
-    console.log('[ADR Graph] Initial version detected:', version);
-    setCurrentVersion(version);
-  }, [getVersion]);
+    console.log('[ADR Graph] Loading versions from:', `${baseUrl}versions.json`);
+    fetch(`${baseUrl}versions.json`)
+      .then((response) => response.json())
+      .then((versions) => {
+        console.log('[ADR Graph] Available versions:', versions);
+        setAvailableVersions(versions || []);
+        // Set initial version once versions are loaded
+        const initialVersion = getVersion(versions || []);
+        console.log('[ADR Graph] Initial version detected:', initialVersion);
+        setCurrentVersion(initialVersion);
+      })
+      .catch((error) => {
+        console.error('[ADR Graph] Error loading versions:', error);
+        setAvailableVersions([]);
+        setCurrentVersion('current');
+      });
+  }, [baseUrl, getVersion]);
 
   // Listen for storage changes (when version is changed in navbar)
   useEffect(() => {
     const handleStorageChange = (e) => {
       if (e.key === 'docs-preferred-version-default' || e.key === null) {
-        setCurrentVersion(getVersion());
+        setCurrentVersion(getVersion(availableVersions));
       }
     };
 
     // Also listen for custom event (Docusaurus might use this)
     const handleVersionChange = () => {
-      setCurrentVersion(getVersion());
+      setCurrentVersion(getVersion(availableVersions));
     };
 
     window.addEventListener('storage', handleStorageChange);
@@ -134,7 +137,7 @@ export default function ADRGraph() {
 
     // Poll for changes as fallback (storage event doesn't fire in same tab)
     const pollInterval = setInterval(() => {
-      const newVersion = getVersion();
+      const newVersion = getVersion(availableVersions);
       setCurrentVersion(prev => {
         if (prev !== newVersion) {
           return newVersion;
@@ -148,14 +151,19 @@ export default function ADRGraph() {
       window.removeEventListener('docusaurus.versionChange', handleVersionChange);
       clearInterval(pollInterval);
     };
-  }, [getVersion]);
+  }, [getVersion, availableVersions]);
 
   // Load graph data based on docs version
   useEffect(() => {
+    // Wait until version is determined
+    if (currentVersion === null) {
+      return;
+    }
+
     setLoading(true);
 
     // Determine which data file to load
-    const dataFile = !currentVersion || currentVersion === 'current'
+    const dataFile = currentVersion === 'current'
       ? 'adr-graph-data.json'
       : `adr-graph-data-${currentVersion}.json`;
 
