@@ -290,18 +290,6 @@ export default function ADRGraph() {
     setSearchTerm(term);
   }, []);
 
-  const handleVersionChange = useCallback((version) => {
-    console.log('[ADR Graph] Version changed to:', version);
-    // Update localStorage so it syncs with navbar
-    try {
-      localStorage.setItem('docs-preferred-version-default', version);
-      console.log('[ADR Graph] Updated localStorage with version:', version);
-    } catch (e) {
-      console.error('[ADR Graph] Failed to update localStorage:', e);
-    }
-    setCurrentVersion(version);
-  }, []);
-
   if (loading) {
     return (
       <div className={styles.loading}>
@@ -332,9 +320,6 @@ export default function ADRGraph() {
         onProjectFilterChange={handleProjectFilterChange}
         onCategoryFilterChange={handleCategoryFilterChange}
         onSearchChange={handleSearchChange}
-        currentVersion={currentVersion}
-        availableVersions={availableVersions}
-        onVersionChange={handleVersionChange}
       />
       <ReactFlow
         nodes={nodes}
