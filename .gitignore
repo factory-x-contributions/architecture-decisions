@@ -116,3 +116,10 @@ buildNumber.properties
 ### Helm
 **/*.lock
 **/*.tgz
+
+# Docusaurus build output
+build/
+
+# Generated ADR graph data (created by plugin during build)
+static/adr-graph-data.json
+static/adr-graph-data-*.json
