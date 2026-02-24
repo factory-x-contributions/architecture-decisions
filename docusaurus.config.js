@@ -63,6 +63,7 @@ const config = {
         config: apiConfigs
       },
     ],
+    './plugins/docusaurus-adr-graph-plugin',
   ],
 
   themes: ["docusaurus-theme-openapi-docs"],
@@ -87,6 +88,7 @@ const config = {
           ]},
           {type: 'docSidebar', label: 'Leo', position: 'left', sidebarId: 'leo_sidebar'},
           {type: 'docSidebar', label: 'Orion', position: 'left', sidebarId: 'orion_sidebar'},
+          {to: '/adr-graph', label: 'ADR Graph', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             type: 'docsVersionDropdown',
