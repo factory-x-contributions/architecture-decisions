@@ -1,7 +1,7 @@
 ---
-id: fx_adrXXX
-title: ADR XXX – Manufacturing as a Service
-date: 2026-02-xx
+id: fx_adr102
+title: ADR 102 – Manufacturing as a Service Version 0.1.0
+date: 2026-02-24
 tags:
   - architecture_decision_records
   - API
@@ -46,9 +46,9 @@ The `Asset` can be the instance of a company, factory, machine, product or a sof
 
 ### Submodels
 
-The following submodels may be used for the Manufacturing as a Service use case. In the MaaS use-case, there are three scenarios which each require a different set of submodels. Additionally, non-required submodels may be used in all scenarios.
+The following submodels may be used for the Manufacturing as a Service use case. In the MaaS use-case, there are three scenarios which each require a different set of submodels. Data providers may expose arbitrary additional submodels according to the need of their business processes.
 
-- **Scenario 1**: Capability Notification: Suppliers provide their machine capabilities in a standardized and automated manner so that platforms can use them for capability-based matching.
+- **Scenario 1**: Capability Notification and Matchmaking: Suppliers provide their machine capabilities in a standardized and automated manner so that platforms can use them for capability-based matching.
 - **Scenario 2**: Request, Offer, Order: Geometry and feature recognition are used to automatically generate an AAS (including a purchase order submodel), enabling suppliers to quickly calculate prices and delivery times and submit quotes for order placement.
 - **Scenario 3**: Order Execution and Quality Control: Orders are executed automatically using AI-supported feature recognition and CAM automation, while the AAS submodel “Quality Control for Machining” translates quality requirements into inspection and machine programs and monitors production resulting in a quality report.
 
