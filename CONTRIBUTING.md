@@ -172,18 +172,6 @@ The service MUST be implemented according to the [OpenAPI specification](./resou
 
 ---
 
-## Frontmatter Reference
-
-| Field           | Required | Description                          | Example                                  |
-|-----------------|----------|--------------------------------------|------------------------------------------|
-| `id`            | Yes      | Unique identifier                    | `fx_adr101`                              |
-| `title`         | Yes      | Full title with ADR number           | `ADR 101 – Load Management`              |
-| `sidebar_label` | No       | Short label for navigation           | `ADR 101 – Load Management`              |
-| `description`   | No       | SEO description                      | `ADR 101 describes...`                   |
-| `date`          | No       | Publication date                     | `2026-02-11`                             |
-| `tags`          | Yes      | Categorization tags                  | `[architecture_decision_records, API]`   |
-
----
 
 ## Questions?
 
