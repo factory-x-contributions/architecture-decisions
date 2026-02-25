@@ -1,17 +1,49 @@
 # Factory-X Architecture Decisions
 
-This repository contains the released architecture decisions made in the Factory-X consortium.
+[![Docusaurus](https://img.shields.io/badge/Built%20with-Docusaurus%203-green?logo=docusaurus)](https://docusaurus.io/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
-## Static website with Docusaurus
+This repository contains the released **Architecture Decision Records (ADRs)** made in the Factory-X consortium.
+
+## Getting Started
+
 This website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
 
-### How to use locally
+### Local Development
 
-To use this site locally and see your doc rendered as website, just use the following commands.
+```bash
+# Install dependencies (only needed once)
+npm install
 
-- `npm install` (only initially needed)
-- `npm start`
+# Start development server
+npm start
+```
 
-This will install all dependencies necessary and run the website on [http://localhost:3000/](http://localhost:3000/).
+The website will be available at [http://localhost:3000/](http://localhost:3000/).
 
+## Contributing
 
+For detailed instructions on how to add new Architecture Decision Records, see **[CONTRIBUTING.md](./CONTRIBUTING.md)**.
+
+### ADR Types
+
+| Type         | Location                       | Template                                                         |
+|--------------|--------------------------------|------------------------------------------------------------------|
+| Network ADR  | `docs/hercules_network_adr/`   | [Network ADR Template](./CONTRIBUTING.md#network-adr-template)   |
+| Use Case ADR | `docs/hercules_use_case_adr/`  | [Use Case ADR Template](./CONTRIBUTING.md#use-case-adr-template) |
+
+### OpenAPI Integration
+
+Use Case ADRs can include OpenAPI specifications for interactive API documentation.
+
+```bash
+# 1. Place OpenAPI YAML in:
+docs/hercules_use_case_adr/<adr-folder>/resources/
+
+# 2. Register in openapi-configs.js
+
+# 3. Generate API docs
+npm run build
+```
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md#adding-openapi-documentation) for details.

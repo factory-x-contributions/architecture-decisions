@@ -1,7 +1,8 @@
 ---
 id: fx_adr101
-title: ADR 101 – The Train Health API
-date: 2025-12-03
+title: ADR 101 – The Train Health API 0.1.0
+sidebar_label: ADR XXX – <Short Title>
+description: ADR XXX describes...
 tags: [architecture_decision_records, API]
 ---
 
