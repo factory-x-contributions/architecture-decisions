@@ -73,14 +73,15 @@ export default function ADRGraph() {
 
   // Get versions from Docusaurus plugin (works in both dev and production)
   const allVersions = useVersions('default');
-  // Filter to only released versions (not "current"/upcoming)
+  // Filter to only released versions (exclude "current" which is upcoming/unreleased)
   const availableVersions = allVersions
-    .filter(v => !v.isLast)
+    .filter(v => v.name !== 'current')
     .map(v => v.name);
-  // Get the latest released version (first non-current version)
-  const latestVersion = availableVersions.length > 0 ? availableVersions[0] : null;
+  // Get the latest released version (isLast=true means latest released version)
+  const latestReleasedVersion = allVersions.find(v => v.isLast);
+  const latestVersion = latestReleasedVersion ? latestReleasedVersion.name : (availableVersions.length > 0 ? availableVersions[0] : null);
 
-  // Get current version from URL parameter or detect from global context
+  // Get current version from localStorage or default to latest
   const getVersion = useCallback(() => {
     // Check URL parameter first (e.g., /adr-graph?version=2025-12)
     const params = new URLSearchParams(location.search);
@@ -89,49 +90,28 @@ export default function ADRGraph() {
       return versionParam;
     }
 
-    // Try to get version from localStorage (set by docs version switcher)
+    // Try to get version from localStorage (set by Docusaurus version switcher)
     try {
       const preferredVersion = localStorage.getItem('docs-preferred-version-default');
-      if (preferredVersion && preferredVersion !== 'current') {
+      if (preferredVersion) {
         return preferredVersion;
       }
     } catch (e) {
       // localStorage might not be available
     }
 
-    // Default to the latest released version, same as Docusaurus navbar
-    if (latestVersion) {
-      return latestVersion;
-    }
-
-    // Fallback to current version only if no versions available
-    return 'current';
+    // Default to the latest released version (2025-12), same as Docusaurus navbar
+    return latestVersion || '2025-12';
   }, [location.search, latestVersion]);
 
   // Initialize version
   useEffect(() => {
-    const version = getVersion();
-    console.log('[ADR Graph] Initial version detected:', version);
-    setCurrentVersion(version);
+    setCurrentVersion(getVersion());
   }, [getVersion]);
 
   // Listen for storage changes (when version is changed in navbar)
   useEffect(() => {
-    const handleStorageChange = (e) => {
-      if (e.key === 'docs-preferred-version-default' || e.key === null) {
-        setCurrentVersion(getVersion());
-      }
-    };
-
-    // Also listen for custom event (Docusaurus might use this)
-    const handleVersionChange = () => {
-      setCurrentVersion(getVersion());
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('docusaurus.versionChange', handleVersionChange);
-
-    // Poll for changes as fallback (storage event doesn't fire in same tab)
+    // Poll for localStorage changes (storage event doesn't fire in same tab)
     const pollInterval = setInterval(() => {
       const newVersion = getVersion();
       setCurrentVersion(prev => {
@@ -143,8 +123,6 @@ export default function ADRGraph() {
     }, 500);
 
     return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('docusaurus.versionChange', handleVersionChange);
       clearInterval(pollInterval);
     };
   }, [getVersion]);
@@ -221,6 +199,21 @@ export default function ADRGraph() {
       const colors = CATEGORY_COLORS[node.category] || CATEGORY_COLORS.network;
       const categoryColor = isDark ? colors.dark : colors.light;
 
+      // Build complete path with version prefix and baseUrl
+      // Paths in JSON are like: /hercules_network_adr/adr002-...
+      // We need to add baseUrl + /docs/{version}/ prefix
+      let adjustedPath;
+      if (currentVersion === 'current') {
+        // For current/upcoming version, use /docs/next/ path
+        adjustedPath = `${baseUrl}docs/next${node.path}`;
+      } else if (currentVersion === latestVersion) {
+        // For the default/latest version, use /docs/ without version prefix
+        adjustedPath = `${baseUrl}docs${node.path}`;
+      } else {
+        // For other versioned pages, use /docs/{version}/ path
+        adjustedPath = `${baseUrl}docs/${currentVersion}${node.path}`;
+      }
+
       return {
         id: node.id,
         type: 'custom',
@@ -231,7 +224,7 @@ export default function ADRGraph() {
           category: node.category,
           tags: node.tags,
           referenceCount: node.referenceCount,
-          path: node.path,
+          path: adjustedPath,
           isHighlighted
         },
         style: {
@@ -276,7 +269,7 @@ export default function ADRGraph() {
 
     setNodes(layoutedNodes);
     setEdges(layoutedEdges);
-  }, [graphData, filteredProjects, filteredCategories, searchTerm, colorMode]);
+  }, [graphData, filteredProjects, filteredCategories, searchTerm, colorMode, currentVersion, latestVersion, baseUrl]);
 
   const handleProjectFilterChange = useCallback((projects) => {
     setFilteredProjects(projects);

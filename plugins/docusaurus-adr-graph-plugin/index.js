@@ -9,21 +9,21 @@ module.exports = function (context) {
     async postBuild({ siteDir, outDir }) {
       console.log('Building ADR graph data...');
 
-      // Build for current/upcoming version
+      // Build for current/upcoming version - store paths without version prefix
       const docsDir = path.join(siteDir, 'docs');
-      const currentData = buildGraphData(docsDir, '/docs');
+      const currentData = buildGraphData(docsDir, '');
       fs.writeFileSync(
         path.join(outDir, 'adr-graph-data.json'),
         JSON.stringify(currentData, null, 2)
       );
       console.log(`  Upcoming: ${currentData.nodes.length} nodes, ${currentData.edges.length} edges`);
 
-      // Build for each versioned docs
+      // Build for each versioned docs - store paths without version prefix
       const versions = getVersions(siteDir);
       for (const version of versions) {
         const versionedDocsDir = path.join(siteDir, 'versioned_docs', `version-${version}`);
         if (fs.existsSync(versionedDocsDir)) {
-          const versionData = buildGraphData(versionedDocsDir, `/docs/${version}`);
+          const versionData = buildGraphData(versionedDocsDir, '');
           fs.writeFileSync(
             path.join(outDir, `adr-graph-data-${version}.json`),
             JSON.stringify(versionData, null, 2)
@@ -41,20 +41,20 @@ module.exports = function (context) {
         fs.mkdirSync(staticDir, { recursive: true });
       }
 
-      // Build for current/upcoming version
+      // Build for current/upcoming version - store paths without version prefix
       const docsDir = path.join(siteDir, 'docs');
-      const currentData = buildGraphData(docsDir, '/docs');
+      const currentData = buildGraphData(docsDir, '');
       fs.writeFileSync(
         path.join(staticDir, 'adr-graph-data.json'),
         JSON.stringify(currentData, null, 2)
       );
 
-      // Build for each versioned docs
+      // Build for each versioned docs - store paths without version prefix
       const versions = getVersions(siteDir);
       for (const version of versions) {
         const versionedDocsDir = path.join(siteDir, 'versioned_docs', `version-${version}`);
         if (fs.existsSync(versionedDocsDir)) {
-          const versionData = buildGraphData(versionedDocsDir, `/docs/${version}`);
+          const versionData = buildGraphData(versionedDocsDir, '');
           fs.writeFileSync(
             path.join(staticDir, `adr-graph-data-${version}.json`),
             JSON.stringify(versionData, null, 2)

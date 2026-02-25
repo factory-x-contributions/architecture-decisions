@@ -40,6 +40,7 @@ const config = {
           versions: {
             current: {
               label: 'Upcoming  🤫🚧 ',
+              path: 'next', // Use /docs/next/ for upcoming version
             },
           },
           docItemComponent: "@theme/ApiItem" // OpenAPI plugin integration
@@ -82,10 +83,15 @@ const config = {
           src: 'https://factory-x.org/wp-content/uploads//factory-x-logo.svg',
         },
         items: [
-          {type: 'dropdown', label: 'Hercules', position: 'left', items: [
-            {to: '/docs/hercules_network_adr', label: 'Network ADR'},
-            {to: '/docs/hercules_use_case_adr', label: 'Use Case ADR'},
-          ]},
+          {
+            type: 'dropdown',
+            label: 'Hercules',
+            position: 'left',
+            items: [
+              {type: 'doc', docId: '/hercules_network_adr', label: 'Network ADR'},
+              {type: 'doc', docId: '/hercules_use_case_adr', label: 'Use Case ADR'},
+            ]
+          },
           {type: 'docSidebar', label: 'Leo', position: 'left', sidebarId: 'leo_sidebar'},
           {type: 'docSidebar', label: 'Orion', position: 'left', sidebarId: 'orion_sidebar'},
           {to: '/adr-graph', label: 'ADR Graph', position: 'left'},

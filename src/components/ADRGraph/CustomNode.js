@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import { Handle, Position } from 'reactflow';
-import Link from '@docusaurus/Link';
 import styles from './ADRGraph.module.css';
 
 function CustomNode({ data }) {
@@ -14,7 +13,7 @@ function CustomNode({ data }) {
       <Handle type="target" position={Position.Left} className={styles.handle} />
       <Handle type="target" position={Position.Right} className={styles.handle} />
 
-      <Link to={path} className={styles.bubbleContent} title={title}>
+      <a href={path} className={styles.bubbleContent} title={title}>
         <div className={styles.bubbleCenter}>
           <div className={styles.adrNumberBubble}>
             {number}
@@ -28,7 +27,7 @@ function CustomNode({ data }) {
         <div className={styles.bubbleTitle}>
           {title}
         </div>
-      </Link>
+      </a>
 
       <Handle type="source" position={Position.Bottom} className={styles.handle} />
       <Handle type="source" position={Position.Left} className={styles.handle} />
