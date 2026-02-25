@@ -3,6 +3,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const organizationName = "factory-x-contributions";
 const projectName = "architecture-decisions";
 
+// Import OpenAPI configurations from separate file
+const apiConfigs = require('./openapi-configs.js');
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Factory-X Architecture Decision Records',
@@ -38,7 +41,8 @@ const config = {
             current: {
               label: 'Upcoming  🤫🚧 ',
             },
-          }
+          },
+          docItemComponent: "@theme/ApiItem" // OpenAPI plugin integration
         },
         blog: {
           showReadingTime: true,
@@ -49,6 +53,19 @@ const config = {
       },
     ],
   ],
+
+  plugins: [
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "openapi",
+        docsPluginId: "default",
+        config: apiConfigs
+      },
+    ],
+  ],
+
+  themes: ["docusaurus-theme-openapi-docs"],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

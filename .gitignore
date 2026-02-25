@@ -18,6 +18,9 @@
 **/.cache/**
 **/*.pack
 
+# Generated OpenAPI docs (all api folders in ADR directories)
+docs/**/api/
+
 # Generated files
 .idea/**/contentModel.xml
 
