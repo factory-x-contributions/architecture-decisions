@@ -51,6 +51,26 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**', '/docs/*/tags/**'],
+          createSitemapItems: async (params) => {
+            const {defaultCreateSitemapItems, ...rest} = params;
+            const items = await defaultCreateSitemapItems(rest);
+            return items.map((item) => {
+              // ADR documents get higher priority
+              if (item.url.includes('/docs/hercules_')) {
+                return {...item, priority: 0.8, changefreq: 'monthly'};
+              }
+              // Homepage gets highest priority
+              if (item.url.endsWith('/architecture-decisions/')) {
+                return {...item, priority: 1.0};
+              }
+              return item;
+            });
+          },
+        },
       },
     ],
   ],
@@ -65,6 +85,7 @@ const config = {
       },
     ],
     './plugins/docusaurus-adr-graph-plugin',
+    './plugins/docusaurus-seo-plugin',
   ],
 
   themes: ["docusaurus-theme-openapi-docs"],
