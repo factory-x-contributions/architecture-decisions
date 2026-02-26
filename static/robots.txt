@@ -1,0 +1,13 @@
+# Robots.txt for Factory-X Architecture Decision Records
+# https://factory-x-contributions.github.io/architecture-decisions/
+
+User-agent: *
+Allow: /
+
+# Exclude low-value pages
+Disallow: /search
+Disallow: /*?*
+Disallow: /docs/*/tags/
+
+# Sitemap location
+Sitemap: https://factory-x-contributions.github.io/architecture-decisions/sitemap.xml

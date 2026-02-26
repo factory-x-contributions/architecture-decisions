@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="This is a static website for the Factory-X Contributions">
+      description="Official Architecture Decision Records (ADRs) for Factory-X. Technical specifications for cross-dataspace interoperability including DSP, AAS profiles, and authentication.">
       <HomepageHeader />
       <main>
       </main>
