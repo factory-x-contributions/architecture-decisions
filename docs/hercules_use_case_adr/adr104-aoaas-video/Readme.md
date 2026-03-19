@@ -14,10 +14,10 @@ This Architecture Decision Record (ADR) provides normative guidance for the use 
 This ADR provides guidance about **Video Streaming**.
 
 Autonomous Operation as a Service aims at keeping machine downtime minimal by accelerating the process to solve a faulty situation using knowledge of prior events as well as human ingenuity.
-One of the main "fault-to-solution" paths within AOaaS involves a Machine Operator diagnosing faulty
-situations remotely while only using machine data and video information. 
+One of the main "fault-to-solution" paths within AOaaS involves a Machine Operator diagnosing faulty situations remotely while only using machine data and video information. 
 
-To access the available video content (either as dashcam-style video segments or as live streams) some guidelines were established, which are documented here. Please note, that this document assumes to only handle the credential and endpoint information; accessing the actual video data itself is not part of this document.
+To access the available video content (either as dashcam-style video segments or as live streams) some guidelines were established, which are documented here. 
+Please note, that this document assumes to only handle the credential and endpoint information; accessing the actual video data itself is not part of this document.
 
 ## Roles
 
@@ -59,13 +59,13 @@ The following submodels are used (the *Short Name* will be used in further chapt
 
 ### How to provide data
 
-To provide information and credentials about available video data the `Asset Interface Description` submodel MUST be used.
-This submodel MUST be part of an Asset Administration Shell (AAS) of a streaming device (like a camera). This AAS itself MUST be referable by using the `globalAssetId` of the streaming device.
+To provide information and credentials about available video data the `Asset Interface Description` Submodel MUST be used.
+This Submodel MUST be part of an Asset Administration Shell (AAS) of a streaming device (like a camera). This AAS itself MUST be referable by using the `globalAssetId` of the streaming device.
 
-A Data Provider MUST provide the `Asset Interface Description` submodel in at least one of two ways:
+A Data Provider MUST provide the `Asset Interface Description` Submodel in at least one of two ways:
 
 - Providing its AAS directly using the `globalAssetId`
-- Providing its AAS using a _self-managed Entity_ as part of a `Bills of Material` submodel of another AAS, also referable using the `globalAssetId`
+- Providing its AAS using a _self-managed Entity_ as part of a `Bills of Material` Submodel of another AAS, also referable using the `globalAssetId`
 
 #### Asset Interface Description Submodel
 
