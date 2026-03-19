@@ -84,7 +84,6 @@ The `Asset Interface Description` Submodel MUST contain:
 
 - Reference the `dsp_sc` inside the `security` SubmodelElementList of `Asset Interface Description`.
 
-
 ## Authentication and Authorization
 
 Apart from mechanism already described within the linked ADRs, no additional Authentication or Authorization mechanism is specified.
