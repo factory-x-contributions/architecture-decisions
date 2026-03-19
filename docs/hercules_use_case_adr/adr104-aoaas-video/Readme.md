@@ -71,7 +71,7 @@ A Data Provider MUST provide the `Asset Interface Description` Submodel in at le
 
 The `Asset Interface Description` Submodel MUST contain:
 
-- Actions for `LiveStream` and `Videos`:
+- Actions for `LiveStream` and `Videos` according to the `json`-schema of the SubmodelElementCollection `PropertyDefinition` of the `Asset Interface Description`:
   - `LiveStream (Action)`:
     - The REST API endpoint that returns a URL (e.g., WebRTC) for the camera's live video stream.
   - `Videos (Action)`:
@@ -84,7 +84,6 @@ The `Asset Interface Description` Submodel MUST contain:
 
 - Reference the `dsp_sc` inside the `security` SubmodelElementList of `Asset Interface Description`.
 
-TODO: Maybe add an example Asset Interface Description here
 
 ## Authentication and Authorization
 
