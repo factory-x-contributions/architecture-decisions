@@ -67,6 +67,8 @@ A Data Provider MUST provide the `Asset Interface Description` Submodel in at le
 - Providing its AAS directly using the `globalAssetId`
 - Providing its AAS using a _self-managed Entity_ as part of a `Bills of Material` Submodel of another AAS, also referable using the `globalAssetId`
 
+> Note: if the `dspEndpoint` of the asset of the stream as well as the required urls are known, a user can direct negotiate the access to it.
+
 #### Asset Interface Description Submodel
 
 The `Asset Interface Description` Submodel MUST contain:
