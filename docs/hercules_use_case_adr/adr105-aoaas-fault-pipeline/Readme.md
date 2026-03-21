@@ -94,12 +94,12 @@ The `Solution Provider` MUST expose the endpoints according to the following Arc
 
 The following submodels are required:
 
-| Submodel            | Version | Reference                       | Status   | Role                                         | 
-| ------------------- | ------- | ------------------------------- | -------- | -------------------------------------------- |
-| Situation Log       | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Data Provider                          |
-| Fault Description   | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Resolution Expert, Solution Provider   |
-| Similarity Analysis | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Solution Provider                            |
-| Fault Correction    | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Resolution Expert, Solution Provider   |
+| Submodel            | Version | Reference                       | Status   | Role                                               | 
+| ------------------- | ------- | ------------------------------- | -------- | -------------------------------------------------- |
+| Situation Log       | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Data Provider                              |
+| Fault Description   | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Resolution Expert, Solution Provider       |
+| Similarity Analysis | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Solution Provider                                |
+| Fault Correction Set    | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Resolution Expert, Solution Provider   |
 
 The following submodels might be also used (mostly to provide additional information to the remote machine operator):
 
@@ -130,12 +130,12 @@ The submodels are used in a basic process that has the following steps:
 2. The `Solution Provider` is notified using `mqtt-over-dsp` by receiving a `submodelelement/update/elementcreated.publish` event from the `Fault Data Provider`.
 3. The `Solution Provider` investigates the `Situation` and retrieves `Fault Descriptions` for faulty components/machines from the `Fault Resolution Expert`.
 4. The `Solution Provider` uses `Situation`, `Fault Descriptions` as well as any optional submodels from the list above to diagnose the faulty situation (also taking into effect previous situations and their solutions). The occurred `Situation` is assigned to one or more `Fault Descriptions` and captured in the `Similarity Analysis`.
-5. The `Solution Provider` uses the discovered `Fault Descriptions` to retrieve `Fault Corrections` from the `Fault Resolution Expert`.
-6. The `Solution Provider` provides `Fault Correction` to solve the faulty situation to the `Fault Data Provider`.
+5. The `Solution Provider` uses the discovered `Fault Descriptions` to retrieve `Fault Correction Set` from the `Fault Resolution Expert`.
+6. The `Solution Provider` provides `Fault Correctiona` to solve the faulty situation to the `Fault Data Provider`.
 
 > Note: A `Solution Provider` may already have `Fault Descriptions` available and does not always need to retrieve this data from a `Fault Resolution Expert`.
 
-> Note: A `Solution Provider` may already have `Fault Corrections` available and does not always need to retrieve this data from a `Fault Resolution Expert`.
+> Note: A `Solution Provider` may already have `Fault Correction Set` available and does not always need to retrieve this data from a `Fault Resolution Expert`.
 
 #### Situation Log
 
@@ -150,11 +150,11 @@ The `Fault Descriptions` submodel contains detailed description of a fault that 
 
 The `Similarity Analysis` submodel contains information how an occurred `Situation` relates to known `Fault Descriptions`, i.e., how similar a new `Situation` is to an old `Situation`. It assigns `Situations` to the associated `Fault Descriptions`.
 
-#### Fault Correction
+#### Fault Correction Set
 
-The `Fault Correction` submodel contains recommended corrective actions, including predefined strategies and workflows, to address specific faults, with options for both automated and operator-initiated interventions.
+The `Fault Correction Set` submodel contains recommended corrective actions, including predefined strategies and workflows, to address specific faults, with options for both automated and operator-initiated interventions.
 
-> Note: A `FaultCorrection` submodel contains one or more corrective actions that can be referenced by one or more `Fault Descriptions`.
+> Note: A `Fault Correction Set` submodel contains one or more corrective actions that can be referenced by one or more `Fault Descriptions`.
 
 #### Optional Submodels
 
