@@ -154,7 +154,7 @@ The `Similarity Analysis` submodel contains information how an occurred `Situati
 
 The `Fault Correction Set` submodel contains recommended corrective actions, including predefined strategies and workflows, to address specific faults, with options for both automated and operator-initiated interventions.
 
-> Note: A `Fault Correction Set` submodel contains one or more corrective actions that can be referenced by one or more `Fault Descriptions`.
+> Note: A `Fault Correction Set` submodel contains one or more corrective actions that can be referenced by one or more `Fault Description`.
 
 #### Optional Submodels
 
