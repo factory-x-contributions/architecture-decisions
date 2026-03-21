@@ -130,12 +130,12 @@ The submodels are used in a basic process that has the following steps:
 2. The `Solution Provider` is notified using `mqtt-over-dsp` by receiving a `submodelelement/update/elementcreated.publish` event from the `Fault Data Provider`.
 3. The `Solution Provider` investigates the `Situation` and retrieves `Fault Descriptions` for faulty components/machines from the `Fault Resolution Expert`.
 4. The `Solution Provider` uses `Situation`, `Fault Descriptions` as well as any optional submodels from the list above to diagnose the faulty situation (also taking into effect previous situations and their solutions). The occurred `Situation` is assigned to one or more `Fault Description` and captured in the `Similarity Analysis`.
-5. The `Solution Provider` uses the discovered `Fault Descriptions` to retrieve `Fault Correction Set` from the `Fault Resolution Expert`.
+5. The `Solution Provider` uses the discovered `Fault Descriptions` to retrieve `Fault Corrections` from the `Fault Resolution Expert`.
 6. The `Solution Provider` provides `Fault Corrections` to solve the faulty situation to the `Fault Data Provider`.
 
 > Note: A `Solution Provider` may already have `Fault Descriptions` available and does not always need to retrieve this data from a `Fault Resolution Expert`.
 
-> Note: A `Solution Provider` may already have `Fault Correction Set` available and does not always need to retrieve this data from a `Fault Resolution Expert`.
+> Note: A `Solution Provider` may already have `Fault Corrections` available and does not always need to retrieve this data from a `Fault Resolution Expert`.
 
 #### Situation Log
 
