@@ -96,10 +96,10 @@ The following submodels are required:
 
 | Submodel            | Version | Reference                       | Status   | Role                                         | 
 | ------------------- | ------- | ------------------------------- | -------- | -------------------------------------------- |
-| Situation Log       | 1.0     | [AOaaS Submodel Template (TBD)] | Required | Fault Data Provider                          |
-| Fault Description   | 1.0     | [AOaaS Submodel Template (TBD)] | Required | Fault Resolution Expert, , Solution Provider |
-| Similarity Analysis | 1.0     | [AOaaS Submodel Template (TBD)] | Required | Solution Provider                            |
-| Fault Correction    | 1.0     | [AOaaS Submodel Template (TBD)] | Required | Fault Resolution Expert, Solution Provider   |
+| Situation Log       | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Data Provider                          |
+| Fault Description   | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Resolution Expert, Solution Provider   |
+| Similarity Analysis | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Solution Provider                            |
+| Fault Correction    | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Resolution Expert, Solution Provider   |
 
 The following submodels might be also used (mostly to provide additional information to the remote machine operator):
 
@@ -129,7 +129,7 @@ The submodels are used in a basic process that has the following steps:
 1. The `Fault Data Provider` detects a faulty situation within a system or machine and creates a `Situation`.
 2. The `Solution Provider` is notified using `mqtt-over-dsp` by receiving a `submodelelement/update/elementcreated.publish` event from the `Fault Data Provider`.
 3. The `Solution Provider` investigates the `Situation` and retrieves `Fault Descriptions` for faulty components/machines from the `Fault Resolution Expert`.
-4. The `Solution Provider` uses `Situation`, `Fault Description` as well as any optional submodels from the list above to diagnose the faulty situation (also taking into effect previous situations and their solutions). The occurred `Situation` is assigned to one or more `FaultDescriptions` and captured in the `Similarity Analysis`.
+4. The `Solution Provider` uses `Situation`, `Fault Descriptions` as well as any optional submodels from the list above to diagnose the faulty situation (also taking into effect previous situations and their solutions). The occurred `Situation` is assigned to one or more `Fault Descriptions` and captured in the `Similarity Analysis`.
 5. The `Solution Provider` uses the discovered `Fault Descriptions` to retrieve `Fault Corrections` from the `Fault Resolution Expert`.
 6. The `Solution Provider` provides `Fault Correction` to solve the faulty situation to the `Fault Data Provider`.
 
@@ -142,19 +142,19 @@ The submodels are used in a basic process that has the following steps:
 The `Situation Log` submodel is used to capture the context of a faulty situation by providing a set of all occured symptoms that were present within a certain timeframe around the time of fault detection.
 One might think of it as a "symptom dashcam".
 
-#### Fault Description
+#### Fault Descriptions
 
-The `Fault Description` submodel contains detailed description of a fault that lead to a faulty situation. It also contains contextual information as well as references to associated symptoms (without duplicating data). Furthermore it contains references to associated `Fault Corrections`.
+The `Fault Descriptions` submodel contains detailed description of a fault that lead to a faulty situation. It also contains contextual information as well as references to associated symptoms (without duplicating data). Furthermore it contains references to associated `Fault Corrections`.
 
 #### Similarity Analysis
 
-The `Similarity Analysis` submodel contains information how an occurred `Situation` relates to known `FaultDescriptions`, i.e., how similar a new `Situation` is to an old `Situation`. It assigns `Situations` to the associated `FaultDescriptions`.
+The `Similarity Analysis` submodel contains information how an occurred `Situation` relates to known `Fault Descriptions`, i.e., how similar a new `Situation` is to an old `Situation`. It assigns `Situations` to the associated `Fault Descriptions`.
 
 #### Fault Correction
 
 The `Fault Correction` submodel contains recommended corrective actions, including predefined strategies and workflows, to address specific faults, with options for both automated and operator-initiated interventions.
 
-> Note: A `FaultCorrection` submodel contains one or more corrective actions that can be referenced by one or more `FaultDescriptions`.
+> Note: A `FaultCorrection` submodel contains one or more corrective actions that can be referenced by one or more `Fault Descriptions`.
 
 #### Optional Submodels
 
