@@ -79,7 +79,7 @@ The `Asset Interfaces Description` Submodel MUST contain an `Interface` with:
   - _Videos (Action)_:
     - The REST API endpoint that returns URLs for recorded videos of a specific event ID.
 
-- Application specific _dsp_sc_ in `securityDefinitions` within `InteractionMetadata`:
+- Application specific _dsp_sc_ in `securityDefinitions` within `EndpointMetadata`:
   - _scheme_: Defines the security mechanism that used during access; Set to: `dsp`.
   - _id_: ID of the Dataset in the Data Providers catalog that contains the Submodel.
   - _dspEndpoint_: Points to a DSP Catalog endpoint containing the relevant Dataset.
