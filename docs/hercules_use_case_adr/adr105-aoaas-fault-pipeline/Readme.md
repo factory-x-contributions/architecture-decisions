@@ -97,7 +97,7 @@ The following submodels are required:
 | Submodel            | Version | Reference                       | Status   | Role                                         | 
 | ------------------- | ------- | ------------------------------- | -------- | -------------------------------------------- |
 | Situation Log       | 1.0     | [AOaaS Submodel Template (TBD)] | Required | Fault Data Provider                          |
-| Fault Description   | 1.0     | [AOaaS Submodel Template (TBD)] | Required | Fault Resolution Expert                      |
+| Fault Description   | 1.0     | [AOaaS Submodel Template (TBD)] | Required | Fault Resolution Expert, , Solution Provider |
 | Similarity Analysis | 1.0     | [AOaaS Submodel Template (TBD)] | Required | Solution Provider                            |
 | Fault Correction    | 1.0     | [AOaaS Submodel Template (TBD)] | Required | Fault Resolution Expert, Solution Provider   |
 
