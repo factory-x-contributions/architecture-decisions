@@ -94,12 +94,12 @@ The `Solution Provider` MUST expose the endpoints according to the following Arc
 
 The following submodels are required:
 
-| Submodel            | Version | Reference                       | Status   | Role                                               | 
-| ------------------- | ------- | ------------------------------- | -------- | -------------------------------------------------- |
-| Situation Log       | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Data Provider                              |
-| Fault Description   | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Resolution Expert, Solution Provider       |
-| Similarity Analysis | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Solution Provider                                |
-| Fault Correction Set    | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Resolution Expert, Solution Provider   |
+| Submodel                | Version | Reference                       | Status   | Role                                               | 
+| ----------------------- | ------- | ------------------------------- | -------- | -------------------------------------------------- |
+| Situation Log           | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Data Provider                              |
+| Fault Descriptions      | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Resolution Expert, Solution Provider       |
+| Similarity Analysis     | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Solution Provider                                |
+| Fault Correction Set    | 1.0     | [AOaaS Submodel Template (TBD)]() | Required | Fault Resolution Expert, Solution Provider       |
 
 The following submodels might be also used (mostly to provide additional information to the remote machine operator):
 
@@ -129,7 +129,7 @@ The submodels are used in a basic process that has the following steps:
 1. The `Fault Data Provider` detects a faulty situation within a system or machine and creates a `Situation`.
 2. The `Solution Provider` is notified using `mqtt-over-dsp` by receiving a `submodelelement/update/elementcreated.publish` event from the `Fault Data Provider`.
 3. The `Solution Provider` investigates the `Situation` and retrieves `Fault Descriptions` for faulty components/machines from the `Fault Resolution Expert`.
-4. The `Solution Provider` uses `Situation`, `Fault Descriptions` as well as any optional submodels from the list above to diagnose the faulty situation (also taking into effect previous situations and their solutions). The occurred `Situation` is assigned to one or more `Fault Descriptions` and captured in the `Similarity Analysis`.
+4. The `Solution Provider` uses `Situation`, `Fault Descriptions` as well as any optional submodels from the list above to diagnose the faulty situation (also taking into effect previous situations and their solutions). The occurred `Situation` is assigned to one or more `Fault Description` and captured in the `Similarity Analysis`.
 5. The `Solution Provider` uses the discovered `Fault Descriptions` to retrieve `Fault Correction Set` from the `Fault Resolution Expert`.
 6. The `Solution Provider` provides `Fault Corrections` to solve the faulty situation to the `Fault Data Provider`.
 
@@ -148,7 +148,7 @@ The `Fault Descriptions` submodel contains detailed description of a fault that 
 
 #### Similarity Analysis
 
-The `Similarity Analysis` submodel contains information how an occurred `Situation` relates to known `Fault Descriptions`, i.e., how similar a new `Situation` is to an old `Situation`. It assigns `Situations` to the associated `Fault Descriptions`.
+The `Similarity Analysis` submodel contains information how an occurred `Situation` relates to known `Fault Description`, i.e., how similar a new `Situation` is to an old `Situation`. It assigns `Situations` to the associated `Fault Description`.
 
 #### Fault Correction Set
 
