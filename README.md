@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2024-2026 Contributors to the Factory-X project
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Factory-X Architecture Decisions
 
 [![Docusaurus](https://img.shields.io/badge/Built%20with-Docusaurus%203-green?logo=docusaurus)](https://docusaurus.io/)
@@ -49,14 +54,15 @@ npm run build
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md#adding-openapi-documentation) for details.
 
-## License
+## Licensing and Copyright
 
-This project uses a dual-license model:
+Copyright 2024-2026 Contributors to the Factory-X project
 
-| Content       | License                                                           | File                                       |
-|---------------|-------------------------------------------------------------------|--------------------------------------------|
-| Source Code   | [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) | [LICENCE](./LICENCE)                       |
-| Documentation | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)         | [LICENCE_non-code](./LICENCE_non-code)     |
+This project uses a dual-licensing approach:
 
-**Code** (JavaScript, configuration files, plugins) is licensed under Apache 2.0.
-**Documentation** (ADRs, markdown files, blog posts) is licensed under Creative Commons Attribution 4.0.
+- **Code** (JavaScript, CSS, configuration files): [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) (Apache-2.0)
+- **Documentation and non-code content** (Markdown, images, PDFs): [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) (CC-BY-4.0)
+
+This project follows the [REUSE specification](https://reuse.software/) for clear and unambiguous license and copyright information. Each file contains SPDX license identifiers either inline or via the `REUSE.toml` file.
+
+For details, see the [NOTICE](./NOTICE) file.

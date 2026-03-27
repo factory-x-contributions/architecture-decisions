@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2024-2026 Contributors to the Factory-X project
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Security Policy
 
 ## Reporting a Vulnerability
