@@ -1,0 +1,28 @@
+version = 1
+SPDX-PackageName = "architecture-decisions"
+SPDX-PackageSupplier = "info@factory-x.org"
+SPDX-PackageDownloadLocation = "https://github.com/factory-x-contributions/architecture-decisions"
+
+[[annotations]]
+path = ["docs/**", "blog/**", "versioned_docs/**", "templates/**", "README.md", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "SECURITY.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024-2026 Contributors to the Factory-X project"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = ["src/**", "plugins/**", "docusaurus.config.js", "sidebars.js", "openapi-configs.js", "babel.config.js"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024-2026 Contributors to the Factory-X project"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [".github/**", ".gitignore", "package.json", "package-lock.json", "static/**", "versioned_sidebars/**", "versions.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024-2026 Contributors to the Factory-X project"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["LICENCE", "LICENCE_non-code", "LICENSES/**", "NOTICE"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024-2026 Contributors to the Factory-X project"
+SPDX-License-Identifier = "Apache-2.0"
