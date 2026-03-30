@@ -1,6 +1,6 @@
 ---
 id: fx_adr101
-title: ADR 101 – Energy consumption & Load Management
+title: ADR 101 – Energy consumption & Load Management Version 0.1.0
 date: 2026-02-11
 tags:
   - architecture_decision_records
