@@ -19,37 +19,33 @@ This ADR provides normative guidance for the implementation of the **"Energy con
 
 ### Data Provider
 
-**Hostname:** `energy-provider`  
-**URL Prefix:** `https://provider.example.com/data-provider`
+The Data Provider MUST expose the endpoints according to the following Architecture Decision Records (ADRs):
 
-The Data Provider MUST expose the following accessible endpoints:
-
-| Service             | Path         | Full URL Example                                       | Description                                                                          |
-| ------------------- | ------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| **AAS Services**    |              |                                                        | As specified in ADR-008 and ADR-009                                                  |
-| AAS Repository      | `/shells/`   | `https://provider.example.com/data-provider/shells/`   | AAS Repository according to ADR-009<br />`Protected` trough DPS                        |
-| Submodel Repository | `/submodel/` | `https://provider.example.com/data-provider/submodel/` | Submodel Repository according to ADR-009<br />`Protected` trough DPS                   |
-| **Application**     |              |                                                        |                                                                                      |
-| Forecast Service    | `/forecast/` | `https://provider.example.com/data-provider/forecast/` | Forecast service for energy time series (see OpenAPI spec)<br />`Protected` trough DPS |
-| **Dataspace**       |              |                                                        |                                                                                      |
-| Protocol Endpoint   | `/protocol/` | `https://provider.example.com/data-provider/protocol/` | Dataspace Protocol Endpoint (DSP), based on ADR 002                                  |
-
+|Architecture Decision Record (ADR)|Version|Link|
+|---|---|---|
+|ADR 002 – Cross-Company Authorization and Discovery|0.2.0|[https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr002-authorization-discovery](https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr002-authorization-discovery)|
+|ADR 003 – Authentication for Dataspaces|0.2.0|[https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr003-authentication](https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr003-authentication)|
+|ADR 008 – Asset Administration Shell Profile for Factory-X|0.2.0|[https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr008-aas-profile](https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr008-aas-profile)|
+|ADR 009 – Discovery of AAS Services via DSP|0.2.0|[https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr009-aas-rest-dsp](https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr009-aas-rest-dsp)|
 ### Data Consumer
 
-**Hostname:** `factory-operator`  
-**URL Prefix:** `https://consumer.example.com/data-consumer`
+The Data Consumer MUST expose the endpoints according to the following Architecture Decision Records (ADRs):
 
-The Data Consumer MUST expose the following public endpoints:
+|Architecture Decision Record (ADR)|Version|Link|
+|---|---|---|
+|ADR 002 – Cross-Company Authorization and Discovery|0.2.0|[https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr002-authorization-discovery](https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr002-authorization-discovery)|
+|ADR 003 – Authentication for Dataspaces|0.2.0|[https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr003-authentication](https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr003-authentication)|
 
-| Service           | Path         | Full URL Example                                       | Description                       |
-| ----------------- | ------------ | ------------------------------------------------------ | --------------------------------- |
-| **Dataspace**     |              |                                                        |                                   |
-| Protocol Endpoint | `/protocol/` | `https://consumer.example.com/data-consumer/protocol/` | Dataspace Protocol Endpoint (DSP) |
-
-> **Note:** Internal management endpoints are implementation-specific and not part of this specification.
 ### Forecast Service API
 
 The Forecast Service MUST be implemented according to the [OpenAPI specification](./resources/forecast-service-openapi.yaml).
+
+**Hostname:** `energy-provider`  
+**URL Prefix:** `https://provider.example.com/data-provider`
+
+| Service          | Path         | Full URL Example                                       | Description                                                                         |
+| ---------------- | ------------ | ------------------------------------------------------ |-------------------------------------------------------------------------------------|
+| Forecast Service | `/forecast/` | `https://provider.example.com/data-provider/forecast/` | Forecast service for energy time series (see OpenAPI spec); `Protected` through DPS |
 ## Data Models
 
 The `Asset` is the instance of a time series set of e.g. an energy meter.
@@ -73,26 +69,24 @@ Each AAS Descriptor MUST point to the following submodels:
 
 The following elements of the `Time Series Data 1.1` submodel are **required**:
 
-| Element                        | idShort              | Requirement | Description                        |
-| ------------------------------ | -------------------- | ----------- | ---------------------------------- |
-| Time Series Segment Collection | `TimeSeriesSegments` | REQUIRED    | Container for time series segments |
-| Segment Metadata               | `SegmentMetadata`    | REQUIRED    | Metadata describing each segment   |
-| Record Count                   | `RecordCount`        | REQUIRED    | Number of records in the segment   |
-| Start Time                     | `StartTime`          | REQUIRED    | ISO 8601 timestamp of first record |
-| End Time                       | `EndTime`            | REQUIRED    | ISO 8601 timestamp of last record  |
-| Sampling Interval              | `SamplingInterval`   | REQUIRED    | ISO 8601 duration between samples  |
-| Records                        | `Records`            | REQUIRED    | The actual time series data points |
+| Element                        | idShort              | Description                        |
+| ------------------------------ | -------------------- | ---------------------------------- |
+| Time Series Segment Collection | `TimeSeriesSegments` | Container for time series segments |
+| Segment Metadata               | `SegmentMetadata`    | Metadata describing each segment   |
+| Record Count                   | `RecordCount`        | Number of records in the segment   |
+| Start Time                     | `StartTime`          | ISO 8601 timestamp of first record |
+| End Time                       | `EndTime`            | ISO 8601 timestamp of last record  |
+| Sampling Interval              | `SamplingInterval`   | ISO 8601 duration between samples  |
+| Records                        | `Records`            | The actual time series data points |
 
 The following elements are **optional**:
 
-| Element            | idShort            | Requirement | Description                        |
-| ------------------ | ------------------ | ----------- | ---------------------------------- |
-| External Data File | `ExternalDataFile` | OPTIONAL    | Reference to external data storage |
-| Linked Segment     | `LinkedSegment`    | OPTIONAL    | Reference to related segments      |
-| Quality Indicator  | `QualityIndicator` | OPTIONAL    | Data quality metadata              |
+| Element            | idShort            | Description                        |
+| ------------------ | ------------------ | ---------------------------------- |
+| External Data File | `ExternalDataFile` | Reference to external data storage |
+| Linked Segment     | `LinkedSegment`    | Reference to related segments      |
+| Quality Indicator  | `QualityIndicator` | Data quality metadata              |
 
 ## Authentication and Authorization
 
-The Data Provider MUST expose the APIs mandated in ADR-002 and ADR-003. AAS resources MUST be exposed according to ADR-008 and ADR-009.
-
-The Dataspace Connector implementation is not prescribed; any connector compliant with the Dataspace Protocol (DSP) specification MAY be used.
+Participants must comply to authentication and authorization defined in ADR-002 and ADR-003.
