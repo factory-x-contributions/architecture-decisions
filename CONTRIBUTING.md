@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2024-2026 Contributors to the Factory-X project
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Contributing ADRs to Factory-X
 
 This guide explains how to add new Architecture Decision Records (ADRs) to the Factory-X documentation.

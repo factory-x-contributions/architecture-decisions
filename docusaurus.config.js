@@ -183,7 +183,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Factory-X - Built with Docusaurus.`,
+        copyright: `Copyright © 2024-${new Date().getFullYear()} Contributors to the Factory-X project. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
