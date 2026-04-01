@@ -1,7 +1,6 @@
 ---
 id: fx_adr102
 title: ADR 102 – Manufacturing as a Service Version 0.1.0
-date: 2026-02-24
 tags:
   - architecture_decision_records
   - API
