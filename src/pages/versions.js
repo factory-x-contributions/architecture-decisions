@@ -8,7 +8,7 @@ const ADR_SLUG = 'hercules_network_adr/adr002-authorization-discovery/';
 
 // Helpers to build version-aware routes:
 function linkToVersionADR(version, index) {
-  return index === 0 ? `/docs/${ADR_SLUG}` : `/blog/Release%20${ADR_SLUG}`;
+  return index === 0 ? `/docs/${ADR_SLUG}` : `/docs/${version}/${ADR_SLUG}`;
 }
 function linkToNextADR() {
   return `/docs/next/${ADR_SLUG}`;
