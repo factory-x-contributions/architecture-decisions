@@ -116,18 +116,19 @@ The following submodels might be also used (mostly to provide additional informa
 
 The following AAS events MUST be implemented:
 
-| SubmodelElement  | Event Type                                    | Reference                     |  Status   | Sender              | Receiver            |
-| ------------------- | --------------------------------------------- | ----------------------------- | ---------------- | ------------------- | --------- |
-| Situation | submodelelement/update/elementcreated.publish | [SubmodelElement-level Event](https://factory-x-contributions.github.io/async-aas-helm/submodel-repository-submodelelement/#operation-send-submodelelement/update/elementcreated.publish)  | required  | Fault Data Provider | Solution Provider  |
+| Name | Data  | Event Type                                    | Version          | Reference        |               Status   | Sender              | Receiver            |
+| ------------------- | ------------------- | --------------------------------------------- | ------------------- | ----------------------------- | ---------------- | ------------------- | --------- |
+| Situation SubmodelElement Create message | Situation | submodelelement/update/elementcreated.publish | 0.3-SNAPSHOT | [SubmodelElement-level Event](https://factory-x-contributions.github.io/async-aas-helm/submodel-repository-submodelelement/#operation-send-submodelelement/update/elementcreated.publish)  | required  | Fault Data Provider | Solution Provider  |
 
-> Note: A `Situation` MUST be published by an `submodelelement/update/elementcreated.publish` event according to ADR 011.
+
+> Note: A `Situation` MUST be published by as `submodelelement/update/elementcreated.publish` event according to ADR 011.
 
 ### The Fault Solution Pipeline
 
 The submodels are used in a basic process that has the following steps:
 
 1. The `Fault Data Provider` detects a faulty situation within a system or machine and creates a `Situation`.
-2. The `Solution Provider` is notified using `mqtt-over-dsp` by receiving a `submodelelement/update/elementcreated.publish` event from the `Fault Data Provider`.
+2. The `Solution Provider` is notified using `mqtt-over-dsp` by receiving a `submodelelement/update/elementcreated.publish` event from the `Fault Data Provider` with the `Situation` as actual data..
 3. The `Solution Provider` investigates the `Situation` and retrieves `Fault Descriptions` for faulty components/machines from the `Fault Resolution Expert`.
 4. The `Solution Provider` uses `Situation`, `Fault Descriptions` as well as any optional submodels from the list above to diagnose the faulty situation (also taking into effect previous situations and their solutions). The occurred `Situation` is assigned to one or more `Fault Description` and captured in the `Similarity Analysis`.
 5. The `Solution Provider` uses the discovered `Fault Descriptions` to retrieve `Fault Corrections` from the `Fault Resolution Expert`.
@@ -141,6 +142,11 @@ The submodels are used in a basic process that has the following steps:
 
 The `Situation Log` submodel is used to capture the context of a faulty situation by providing a set of all occured symptoms that were present within a certain timeframe around the time of fault detection.
 One might think of it as a "symptom dashcam".
+
+#### Situation SubmodelElement Create message
+
+The `submodelelement/update/elementcreated.publish` event MUST contain the `Situation` as `data`. 
+The AAS event MUST be published as `submodelelement/update/elementcreated.publish` event according to ADR 011.
 
 #### Fault Descriptions
 
