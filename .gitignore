@@ -20,6 +20,7 @@
 
 # Generated OpenAPI docs (all api folders in ADR directories)
 docs/**/api/
+versioned_docs/**/api/
 
 # Generated files
 .idea/**/contentModel.xml
