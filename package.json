@@ -27,8 +27,8 @@
     "docusaurus-theme-openapi-docs": "^4.7.1",
     "gray-matter": "^4.0.3",
     "prism-react-renderer": "^2.3.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "reactflow": "^11.11.4"
   },
   "devDependencies": {
