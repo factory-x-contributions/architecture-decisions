@@ -191,16 +191,6 @@ export default function ADRGraph() {
 
     const isDark = colorMode === 'dark';
 
-    // Compute connected node IDs for hover impact analysis
-    const connectedNodeIds = new Set();
-    if (hoveredNodeId) {
-      connectedNodeIds.add(hoveredNodeId);
-      for (const edge of filteredEdges) {
-        if (edge.source === hoveredNodeId) connectedNodeIds.add(edge.target);
-        if (edge.target === hoveredNodeId) connectedNodeIds.add(edge.source);
-      }
-    }
-
     const reactFlowNodes = filteredNodes.map((node) => {
       const { width, height } = getBubbleDimensions(node.referenceCount);
       const isHighlighted = searchTerm !== '' &&
@@ -209,8 +199,6 @@ export default function ADRGraph() {
 
       const colors = CATEGORY_COLORS[node.category] || CATEGORY_COLORS.network;
       const categoryColor = isDark ? colors.dark : colors.light;
-
-      const isDimmed = hoveredNodeId && !connectedNodeIds.has(node.id);
 
       // Build complete path with version prefix and baseUrl
       // Paths in JSON are like: /hercules_network_adr/adr002-...
@@ -249,7 +237,6 @@ export default function ADRGraph() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          opacity: isDimmed ? 0.2 : 1,
           transition: 'opacity 0.2s ease'
         }
       };
@@ -257,8 +244,6 @@ export default function ADRGraph() {
 
     const reactFlowEdges = filteredEdges.map((edge) => {
       const edgeColor = isDark ? '#6b8ec8' : '#4a7bc8';
-      const isConnectedEdge = hoveredNodeId && (edge.source === hoveredNodeId || edge.target === hoveredNodeId);
-      const isEdgeDimmed = hoveredNodeId && !isConnectedEdge;
 
       return {
         id: edge.id,
@@ -268,8 +253,7 @@ export default function ADRGraph() {
         animated: true,
         style: {
           stroke: edgeColor,
-          strokeWidth: isConnectedEdge ? 5 : 3,
-          opacity: isEdgeDimmed ? 0.1 : 1,
+          strokeWidth: 3,
           transition: 'opacity 0.2s ease, stroke-width 0.2s ease'
         },
         markerEnd: {
@@ -288,7 +272,41 @@ export default function ADRGraph() {
 
     setNodes(layoutedNodes);
     setEdges(layoutedEdges);
-  }, [graphData, filteredProjects, filteredCategories, searchTerm, colorMode, currentVersion, latestVersion, baseUrl, hoveredNodeId]);
+  }, [graphData, filteredProjects, filteredCategories, searchTerm, colorMode, currentVersion, latestVersion, baseUrl]);
+
+  // Hover impact analysis — lightweight style-only update, no layout recalculation
+  useEffect(() => {
+    if (!graphData.edges) return;
+
+    const connectedNodeIds = new Set();
+    if (hoveredNodeId) {
+      connectedNodeIds.add(hoveredNodeId);
+      for (const edge of graphData.edges) {
+        if (edge.source === hoveredNodeId) connectedNodeIds.add(edge.target);
+        if (edge.target === hoveredNodeId) connectedNodeIds.add(edge.source);
+      }
+    }
+
+    setNodes(nds => nds.map(node => ({
+      ...node,
+      style: {
+        ...node.style,
+        opacity: hoveredNodeId && !connectedNodeIds.has(node.id) ? 0.2 : 1
+      }
+    })));
+
+    setEdges(eds => eds.map(edge => {
+      const isConnected = hoveredNodeId && (edge.source === hoveredNodeId || edge.target === hoveredNodeId);
+      return {
+        ...edge,
+        style: {
+          ...edge.style,
+          opacity: hoveredNodeId && !isConnected ? 0.1 : 1,
+          strokeWidth: isConnected ? 5 : 3
+        }
+      };
+    }));
+  }, [hoveredNodeId, graphData.edges]);
 
   const handleProjectFilterChange = useCallback((projects) => {
     setFilteredProjects(projects);
