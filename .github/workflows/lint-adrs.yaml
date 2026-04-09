@@ -1,0 +1,26 @@
+name: Lint ADRs
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'docs/**/adr*/**'
+
+jobs:
+  lint:
+    name: Validate ADR structure and frontmatter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint ADRs
+        run: node scripts/lint-adrs.js
