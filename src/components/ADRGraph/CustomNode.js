@@ -16,7 +16,7 @@ function CustomNode({ data }) {
       <a href={path} className={styles.bubbleContent} title={title}>
         <div className={styles.bubbleCenter}>
           <div className={styles.adrNumberBubble}>
-            {number}
+            ADR {number}
           </div>
           {referenceCount > 0 && (
             <div className={styles.referenceBadgeBubble}>
