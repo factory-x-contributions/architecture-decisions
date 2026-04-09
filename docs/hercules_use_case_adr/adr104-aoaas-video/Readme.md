@@ -84,7 +84,110 @@ The `Asset Interfaces Description` Submodel MUST contain an `Interface` with:
   - _id_: ID of the Dataset in the Data Providers catalog that contains the Submodel.
   - _dspEndpoint_: Points to a DSP Catalog endpoint containing the relevant Dataset.
 
-  > Note: _dsp_sc_ is defined in `resources/dsp_no_sec.json` within this repository
+  > Note: _dsp_sc_ is defined as follows:
+
+  <details>
+  <summary>dsp_no_sec.json — Security Definition</summary>
+
+  ```json
+  {
+    "idShort": "dsp_sc",
+    "qualifiers": [
+      {
+        "kind": "ConceptQualifier",
+        "type": "Cardinality",
+        "valueType": "xs:string",
+        "value": "ZeroToOne"
+      }
+    ],
+    "value": [
+      {
+        "idShort": "scheme",
+        "semanticId": {
+          "type": "ExternalReference",
+          "keys": [
+            {
+              "type": "GlobalReference",
+              "value": "https://www.w3.org/2019/wot/security#SecurityScheme"
+            }
+          ]
+        },
+        "qualifiers": [
+          {
+            "kind": "ConceptQualifier",
+            "type": "Cardinality",
+            "valueType": "xs:string",
+            "value": "One"
+          }
+        ],
+        "valueType": "xs:string",
+        "value": "dsp",
+        "modelType": "Property"
+      },
+      {
+        "idShort": "id",
+        "description": [
+          {
+            "language": "en",
+            "text": "id represents the id of that Dataset in the Data Providers catalog that contains the Submodel."
+          }
+        ],
+        "qualifiers": [
+          {
+            "semanticId": {
+              "type": "ExternalReference",
+              "keys": [
+                {
+                  "type": "GlobalReference",
+                  "value": "https://admin-shell.io/SubmodelTemplates/Cardinality/1/0"
+                }
+              ]
+            },
+            "kind": "TemplateQualifier",
+            "type": "SMT/Cardinality",
+            "valueType": "xs:string",
+            "value": "One"
+          }
+        ],
+        "valueType": "xs:string",
+        "modelType": "Property"
+      },
+      {
+        "idShort": "dspEndpoint",
+        "description": [
+          {
+            "language": "en",
+            "text": "dspEndpoint represents the endpoint of the Data Provider's DSP endpoint where the catalog containing the relevant Dataset is located."
+          }
+        ],
+        "qualifiers": [
+          {
+            "semanticId": {
+              "type": "ExternalReference",
+              "keys": [
+                {
+                  "type": "GlobalReference",
+                  "value": "https://admin-shell.io/SubmodelTemplates/Cardinality/1/0"
+                }
+              ]
+            },
+            "kind": "TemplateQualifier",
+            "type": "SMT/Cardinality",
+            "valueType": "xs:string",
+            "value": "One"
+          }
+        ],
+        "valueType": "xs:string",
+        "modelType": "Property"
+      }
+    ],
+    "modelType": "SubmodelElementCollection"
+  }
+  ```
+
+  </details>
+
+  [Download dsp_no_sec.json](./resources/dsp_no_sec.json)
 
 - Reference to _dsp_sc_ within the `security` of `EndpointMetadata`.
 
