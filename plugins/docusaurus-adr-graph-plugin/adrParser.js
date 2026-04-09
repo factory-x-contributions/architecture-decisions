@@ -22,9 +22,10 @@ function findADRFiles(dir) {
       const stat = fs.statSync(fullPath);
 
       if (stat.isDirectory() && item.startsWith('adr')) {
-        const readmePath = path.join(fullPath, 'README.md');
-        if (fs.existsSync(readmePath)) {
-          adrFiles.push(readmePath);
+        const files = fs.readdirSync(fullPath);
+        const readmeFile = files.find(f => f.toLowerCase() === 'readme.md');
+        if (readmeFile) {
+          adrFiles.push(path.join(fullPath, readmeFile));
         }
       } else if (stat.isDirectory()) {
         // Scan all subdirectories to find ADRs in hercules, leo, orion
