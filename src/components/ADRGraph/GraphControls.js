@@ -152,7 +152,6 @@ export default function GraphControls({
               <span className={styles.legendDot} style={{ background: '#9B59B6' }} />
               <span>Orion</span>
             </div>
-            <p className={styles.legendHint}>Larger nodes = more references</p>
           </div>
         </div>
       )}
