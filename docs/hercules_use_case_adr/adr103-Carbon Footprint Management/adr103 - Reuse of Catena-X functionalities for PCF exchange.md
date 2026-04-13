@@ -43,7 +43,7 @@ tags: [architecture_decision_records, PCF, Catena-X, Tractus-X, reuse, API]
 
 - If the referenced Factory-X ADRs differ from the Catena-X standards, Users MUST follow the Catena-X Standards to enure interoperability across dataspaces.
 
-Referenced Catena-X Standard and corresponding Factory-X ADRs
+Referenced Catena-X Standard and corresponding Factory-X ADRs:
 
 | Catena-X Standard             | Version of Catena-X Standard         | Factory-X ADR                                       | Version of Factory-X ADR                                 |
 | ------------------- | ------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
