@@ -50,7 +50,7 @@ Referenced Catena-X Standard and corresponding Factory-X ADRs:
 | CX-0136 "Use Case PCF"    |          2.2.1  |                         -                               | 
 |   CX‑0018 “Dataspace Connectivity”  |   4.1 | adr 002 & adr003  |             
 |   CX-0002 "Digital Twins in Catena-X" |   2.3 | adr 008 & adr009  |              
-|   CX-0003 "SAMM Aspect Meta Model" |   1.2 | ?  |             
+|   CX-0003 "SAMM Aspect Meta Model" |   1.2 | -  |             
 |CX-0050 "CX-Specific Credentials" |   2.2.0 | -  |         
 |CX-0152 "Policy Constraints for Data Exchange" |   1.0.0 | -  |         
 
