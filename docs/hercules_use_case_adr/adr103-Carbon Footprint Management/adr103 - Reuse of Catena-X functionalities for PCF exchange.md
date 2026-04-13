@@ -18,17 +18,17 @@ tags: [architecture_decision_records, PCF, Catena-X, Tractus-X, reuse, API]
 
 ## API structure
 
-- The partners MUST implement PCF exchange according to Catena-X CX-0136 "Use Case PCF" (v2.2.1) and its defined synchronous and/or asynchronous exchange patterns, including the "standardization triangle" requirements.
+- The partners MUST implement PCF exchange according to Catena-X CX-0136 "Use Case PCF" and its defined synchronous and/or asynchronous exchange patterns, including the "standardization triangle" requirements.
 
 - If asynchronous data exchange is used, the PCF Exchange API MUST be implemented as specified (HTTP GET for request, HTTP PUT for response) and MUST be called via a Catena‑X conform connector according to CX‑0018 “Dataspace Connectivity” / Factory-X adr 002 & adr003 (not directly).
 
 - If synchronous data exchange is used, the Data Provider MUST register the required submodel endpoint in the Digital Twin (e.g., idShort: "SynchronousPCFExchangeEndpoint") according to CX-0002 "Digital Twins in Catena-X" / Factory-X adr008 & adr009, and the synchronous GET MUST be executed via a Catena-X conform connector according to CX-0018 "Dataspace Connectivity" / Factory-X adr002 & adr003 (DSP negotiation + Data Plane) and MUST NOT bypass this connector.
 
-- The partners MUST follow the additional Catena-X standards referenced as supporting standards in CX-0136 (e.g., CX-0002 "Digital Twins in Catena-X", CX-0018 "Dataspace Connectivity", CX-0003 "SAMM Aspect Meta Model"), insofar as they are used by the PCF use case.
+- The partners MUST follow the additional Catena-X standards referenced as supporting standards in CX-0136 (e.g., CX-0002 "Digital Twins in Catena-X" / Factory-X adr008 & adr009, CX-0018 "Dataspace Connectivity" / Factory-X adr002 & adr003, CX-0003 "SAMM Aspect Meta Model"), insofar as they are used by the PCF use case.
 
 ## Data Models
 
-- PCF payloads MUST conform to the PCF aspect model identifier required by CX-0136 (urn:samm:io.catenax.pcf:9.0.0, as specified) and the corresponding machine-readable artifacts provided in the Tractus-X semantic models repository.
+- PCF payloads MUST conform to the PCF aspect model identifier required by CX-0136 and the corresponding machine-readable artifacts provided in the Tractus-X semantic models repository.
 
 - The semantic model identifier MUST be used by the Data Provider to define the semantics of the transferred data.
 
@@ -47,5 +47,10 @@ Referenced Catena-X Standard and corresponding Factory-X ADRs
 
 | Catena-X Standard             | Version of Catena-X Standard         | Factory-X ADR                                       | Version of Factory-X ADR                                 |
 | ------------------- | ------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| CX-0136    |          urn:samm:io.catenax.pcf:9.0.0    |                         -                               | -                                                  |
-|     |    |   |                         |
+| CX-0136 "Use Case PCF"    |          urn:samm:io.catenax.pcf:9.0.0    |                         -                               | -                                                  |
+|   CX‑0018 “Dataspace Connectivity”  |   ? | adr 002 & adr003  |               ?          |
+|   CX-0002 "Digital Twins in Catena-X" |   ? | adr 008 & adr009  |               ?          |
+|   CX-0003 "SAMM Aspect Meta Model" |   ? | ?  |               ?          |
+|CX-0050 "CX-Specific Credentials" |   ? | -  |               -         |
+|CX-0152 "Policy Constraints for Data Exchange" |   ? | -  |               -         |
+
