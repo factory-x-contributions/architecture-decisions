@@ -45,12 +45,12 @@ tags: [architecture_decision_records, PCF, Catena-X, Tractus-X, reuse, API]
 
 Referenced Catena-X Standard and corresponding Factory-X ADRs:
 
-| Catena-X Standard             | Version of Catena-X Standard         | Factory-X ADR                                       | Version of Factory-X ADR                                 |
-| ------------------- | ------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| CX-0136 "Use Case PCF"    |          ?  |                         -                               | -                                                  |
-|   CX‑0018 “Dataspace Connectivity”  |   ? | adr 002 & adr003  |               ?          |
-|   CX-0002 "Digital Twins in Catena-X" |   ? | adr 008 & adr009  |               ?          |
-|   CX-0003 "SAMM Aspect Meta Model" |   ? | ?  |               ?          |
-|CX-0050 "CX-Specific Credentials" |   ? | -  |               -         |
-|CX-0152 "Policy Constraints for Data Exchange" |   ? | -  |               -         |
+| Catena-X Standard             | Version of Catena-X Standard         | Factory-X ADR                                       | 
+| ------------------- | ------------ | ------------------------------------------------------ | 
+| CX-0136 "Use Case PCF"    |          2.2.1  |                         -                               | 
+|   CX‑0018 “Dataspace Connectivity”  |   4.1 | adr 002 & adr003  |             
+|   CX-0002 "Digital Twins in Catena-X" |   2.3 | adr 008 & adr009  |              
+|   CX-0003 "SAMM Aspect Meta Model" |   1.2 | ?  |             
+|CX-0050 "CX-Specific Credentials" |   2.2.0 | -  |         
+|CX-0152 "Policy Constraints for Data Exchange" |   1.0.0 | -  |         
 
