@@ -47,7 +47,7 @@ Referenced Catena-X Standard and corresponding Factory-X ADRs
 
 | Catena-X Standard             | Version of Catena-X Standard         | Factory-X ADR                                       | Version of Factory-X ADR                                 |
 | ------------------- | ------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| CX-0136 "Use Case PCF"    |          urn:samm:io.catenax.pcf:9.0.0    |                         -                               | -                                                  |
+| CX-0136 "Use Case PCF"    |          ?  |                         -                               | -                                                  |
 |   CX‑0018 “Dataspace Connectivity”  |   ? | adr 002 & adr003  |               ?          |
 |   CX-0002 "Digital Twins in Catena-X" |   ? | adr 008 & adr009  |               ?          |
 |   CX-0003 "SAMM Aspect Meta Model" |   ? | ?  |               ?          |
