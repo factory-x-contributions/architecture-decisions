@@ -2,7 +2,6 @@
 id: fx_adr103
 title: ADR 103 - Re-use Catena-X PCF Exchange 0.1.0
 tags: [architecture_decision_records, PCF, Catena-X, Tractus-X, reuse, API]
-Version: 0.1.0
 ---
 
 
