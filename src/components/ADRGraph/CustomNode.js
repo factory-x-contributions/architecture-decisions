@@ -3,7 +3,7 @@ import { Handle, Position } from 'reactflow';
 import styles from './ADRGraph.module.css';
 
 function CustomNode({ data }) {
-  const { number, title, category, tags, referenceCount, path, isHighlighted } = data;
+  const { number, title, category, path, isHighlighted } = data;
 
   const categoryColor = category === 'network' ? '#386FB3' : '#C4D042';
 
@@ -16,13 +16,8 @@ function CustomNode({ data }) {
       <a href={path} className={styles.bubbleContent} title={title}>
         <div className={styles.bubbleCenter}>
           <div className={styles.adrNumberBubble}>
-            {number}
+            ADR {number}
           </div>
-          {referenceCount > 0 && (
-            <div className={styles.referenceBadgeBubble}>
-              {referenceCount}
-            </div>
-          )}
         </div>
         <div className={styles.bubbleTitle}>
           {title}

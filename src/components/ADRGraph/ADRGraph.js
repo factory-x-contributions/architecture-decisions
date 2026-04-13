@@ -66,6 +66,7 @@ export default function ADRGraph() {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentVersion, setCurrentVersion] = useState(null);
+  const [hoveredNodeId, setHoveredNodeId] = useState(null);
   const { colorMode } = useColorMode();
   const location = useLocation();
 
@@ -235,7 +236,8 @@ export default function ADRGraph() {
           borderRadius: '50%',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          transition: 'opacity 0.2s ease'
         }
       };
     });
@@ -251,7 +253,8 @@ export default function ADRGraph() {
         animated: true,
         style: {
           stroke: edgeColor,
-          strokeWidth: 3
+          strokeWidth: 3,
+          transition: 'opacity 0.2s ease, stroke-width 0.2s ease'
         },
         markerEnd: {
           type: MarkerType.ArrowClosed,
@@ -271,6 +274,40 @@ export default function ADRGraph() {
     setEdges(layoutedEdges);
   }, [graphData, filteredProjects, filteredCategories, searchTerm, colorMode, currentVersion, latestVersion, baseUrl]);
 
+  // Hover impact analysis — lightweight style-only update, no layout recalculation
+  useEffect(() => {
+    if (!graphData.edges) return;
+
+    const connectedNodeIds = new Set();
+    if (hoveredNodeId) {
+      connectedNodeIds.add(hoveredNodeId);
+      for (const edge of graphData.edges) {
+        if (edge.source === hoveredNodeId) connectedNodeIds.add(edge.target);
+        if (edge.target === hoveredNodeId) connectedNodeIds.add(edge.source);
+      }
+    }
+
+    setNodes(nds => nds.map(node => ({
+      ...node,
+      style: {
+        ...node.style,
+        opacity: hoveredNodeId && !connectedNodeIds.has(node.id) ? 0.2 : 1
+      }
+    })));
+
+    setEdges(eds => eds.map(edge => {
+      const isConnected = hoveredNodeId && (edge.source === hoveredNodeId || edge.target === hoveredNodeId);
+      return {
+        ...edge,
+        style: {
+          ...edge.style,
+          opacity: hoveredNodeId && !isConnected ? 0.1 : 1,
+          strokeWidth: isConnected ? 5 : 3
+        }
+      };
+    }));
+  }, [hoveredNodeId, graphData.edges]);
+
   const handleProjectFilterChange = useCallback((projects) => {
     setFilteredProjects(projects);
   }, []);
@@ -281,6 +318,14 @@ export default function ADRGraph() {
 
   const handleSearchChange = useCallback((term) => {
     setSearchTerm(term);
+  }, []);
+
+  const onNodeMouseEnter = useCallback((_, node) => {
+    setHoveredNodeId(node.id);
+  }, []);
+
+  const onNodeMouseLeave = useCallback(() => {
+    setHoveredNodeId(null);
   }, []);
 
   if (loading) {
@@ -319,6 +364,8 @@ export default function ADRGraph() {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
+        onNodeMouseEnter={onNodeMouseEnter}
+        onNodeMouseLeave={onNodeMouseLeave}
         nodeTypes={nodeTypes}
         fitView
         minZoom={0.1}

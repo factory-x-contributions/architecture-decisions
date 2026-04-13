@@ -52,7 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   cursor: pointer;
   position: relative;
   overflow: visible;
@@ -102,25 +102,13 @@
 }
 
 .adrNumberBubble {
-  font-size: 2.75rem;
+  font-size: 2rem;
   font-weight: 800;
   letter-spacing: -2px;
   font-family: var(--ifm-font-family-base);
   color: white;
   line-height: 1;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.referenceBadgeBubble {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(4px);
-  color: white;
-  font-size: 0.75rem;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-weight: 600;
-  white-space: nowrap;
-  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .bubbleTitle {
@@ -375,13 +363,6 @@
   flex-shrink: 0;
 }
 
-.legendHint {
-  margin: 10px 0 0 0;
-  font-size: 0.7rem;
-  color: var(--ifm-color-emphasis-500);
-  font-style: italic;
-}
-
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .container {
@@ -407,11 +388,6 @@
 
   .bubbleTitle {
     font-size: 0.8rem;
-  }
-
-  .referenceBadgeBubble {
-    font-size: 0.7rem;
-    padding: 3px 8px;
   }
 
   .bubbleContent {
