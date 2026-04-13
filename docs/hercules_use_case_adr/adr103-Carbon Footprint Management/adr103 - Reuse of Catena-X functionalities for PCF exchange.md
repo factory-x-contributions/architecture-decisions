@@ -2,6 +2,7 @@
 id: fx_adr103
 title: ADR 103 - Re-use Catena-X PCF Exchange
 tags: [architecture_decision_records, PCF, Catena-X, Tractus-X, reuse, API]
+Version: 0.1.0
 ---
 
 
@@ -45,12 +46,12 @@ tags: [architecture_decision_records, PCF, Catena-X, Tractus-X, reuse, API]
 
 Referenced Catena-X Standard and corresponding Factory-X ADRs:
 
-| Catena-X Standard             | Version of Catena-X Standard         | Factory-X ADR                                       | 
+| Catena-X Standard             | Version of Catena-X Standard         | Url of Catena-X Standard         | Factory-X ADR                                       | 
 | ------------------- | ------------ | ------------------------------------------------------ | 
-| CX-0136 "Use Case PCF"    |          2.2.1  |                         -                               | 
-|   CX‑0018 “Dataspace Connectivity”  |   4.1 | adr 002 & adr003  |             
-|   CX-0002 "Digital Twins in Catena-X" |   2.3 | adr 008 & adr009  |              
-|   CX-0003 "SAMM Aspect Meta Model" |   1.2 | -  |             
-|CX-0050 "CX-Specific Credentials" |   2.2.0 | -  |         
-|CX-0152 "Policy Constraints for Data Exchange" |   1.0.0 | -  |         
+|CX-0136 "Use Case PCF"    |          2.2.1  | https://catenax-ev.github.io/docs/standards/CX-0136-UseCasePCF |-| 
+|CX‑0018 “Dataspace Connectivity”  |   4.1 |https://catenax-ev.github.io/docs/next/standards/CX-0018-DataspaceConnectivity| adr 002 & adr003  |             
+|CX-0002 "Digital Twins in Catena-X" |   2.3 |https://catenax-ev.github.io/docs/standards/CX-0002-DigitalTwinsInCatenaX| adr 008 & adr009  |              
+|CX-0003 "SAMM Aspect Meta Model" |   1.2 |https://catenax-ev.github.io/docs/next/standards/CX-0003-SAMMSemanticAspectMetaModel| -  |             
+|CX-0050 "CX-Specific Credentials" |   2.2.0 |https://catenax-ev.github.io/docs/standards/CX-0050-CXSpecificCredentials| -  |         
+|CX-0152 "Policy Constraints for Data Exchange" |https://catenax-ev.github.io/docs/standards/CX-0152-PolicyConstrainsForDataExchange|   1.0.0 | -  |         
 
