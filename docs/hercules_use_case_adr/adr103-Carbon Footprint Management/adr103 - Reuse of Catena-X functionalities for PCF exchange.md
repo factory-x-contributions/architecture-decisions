@@ -39,7 +39,7 @@ tags: [architecture_decision_records, PCF, Catena-X, Tractus-X, reuse, API]
 - Data sharing MUST follow the CX‑0136 conformance and proof‑of‑conformity requirements for Catena‑X participants, including that standardized OpenAPI specs and CX‑0018 “Dataspace Connectivity” / Factory-X adr002 & adr003 asset/contract structures MUST correspond to the described structure.
 - Where policies are used in the PCF exchange context, CX-0136 specifies required minimum policy elements (e.g., Membership, FrameworkAgreement, UsagePurpose) and references the Catena-X policy constraints standard that MUST be followed for providing/consuming data in Catena-X. These policy elements are defined as Verifiable Credentials in CX-0050 "CX-Specific Credentials" and their enforcement rules are specified in CX-0152 "Policy Constraints for Data Exchange", both of which MUST be followed when exchanging PCF data with Catena-X-aligned partners.
 
-## Hirarchy of references
+## Remarks
 
 - If the referenced Factory-X ADRs differ from the Catena-X standards, Users MUST follow the Catena-X Standards to enure interoperability across dataspaces.
 
