@@ -24,7 +24,7 @@
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "dagre": "^0.8.5",
-    "docusaurus-plugin-openapi-docs": "^5.0.0",
+    "docusaurus-plugin-openapi-docs": "^5.0.1",
     "docusaurus-theme-openapi-docs": "^5.0.0",
     "gray-matter": "^4.0.3",
     "prism-react-renderer": "^2.3.0",
