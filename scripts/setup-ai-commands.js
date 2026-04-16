@@ -9,17 +9,18 @@
  * Use this if symlinks don't work on your system (e.g. Windows without developer mode).
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const ROOT = path.join(__dirname, '..');
 const SKILLS_DIR = path.join(ROOT, '.ai', 'skills');
 
 // Claude Code expects skills at .claude/<name>/README.md
-// Other tools use a flat file: <tool>/skills/<name>.md
+// Cursor expects rules at .cursor/rules/<name>.mdc
+// Cline expects skills at .cline/skills/<name>.md
 const TARGETS = [
-  { dir: '.cursor/skills', label: 'Cursor',     flat: true },
-  { dir: '.cline/skills',  label: 'Cline',      flat: true },
+  { dir: '.cursor/rules', label: 'Cursor', ext: '.mdc' },
+  { dir: '.cline/skills', label: 'Cline',  ext: '.md'  },
 ];
 
 // Find all skill directories containing a SKILL.md
@@ -45,15 +46,15 @@ for (const skill of skillDirs) {
   console.log(`  .claude/${skill.name}/README.md`);
 }
 
-// Cursor / Cline: <tool>/skills/<name>.md
-for (const { dir, label } of TARGETS) {
+// Cursor (.cursor/rules/<name>.mdc) and Cline (.cline/skills/<name>.md)
+for (const { dir, label, ext } of TARGETS) {
   const targetDir = path.join(ROOT, dir);
   fs.mkdirSync(targetDir, { recursive: true });
 
   console.log(`${label}:`);
   for (const skill of skillDirs) {
     const src  = path.join(SKILLS_DIR, skill.name, 'SKILL.md');
-    const dest = path.join(targetDir, `${skill.name}.md`);
+    const dest = path.join(targetDir, `${skill.name}${ext}`);
 
     try {
       const stat = fs.lstatSync(dest);
@@ -62,7 +63,7 @@ for (const { dir, label } of TARGETS) {
     } catch {}
 
     fs.copyFileSync(src, dest);
-    console.log(`  ${dir}/${skill.name}.md`);
+    console.log(`  ${dir}/${skill.name}${ext}`);
   }
 }
 
