@@ -102,6 +102,9 @@ export default function ADRGraph() {
       return;
     }
 
+    const controller = new AbortController();
+    const { signal } = controller;
+
     setLoading(true);
 
     // Determine which data file to load
@@ -110,29 +113,27 @@ export default function ADRGraph() {
       : `adr-graph-data-${currentVersion}.json`;
 
     const fullUrl = `${baseUrl}${dataFile}`;
-    console.log('[ADR Graph] Loading data for version:', currentVersion);
-    console.log('[ADR Graph] Fetching URL:', fullUrl);
 
-    fetch(fullUrl)
+    fetch(fullUrl, { signal })
       .then((response) => {
-        console.log('[ADR Graph] Response status:', response.status, response.ok);
         if (!response.ok) {
-          console.warn('[ADR Graph] Failed to load versioned data, falling back to current');
           // Fallback to current version if versioned file doesn't exist
-          return fetch(`${baseUrl}adr-graph-data.json`);
+          return fetch(`${baseUrl}adr-graph-data.json`, { signal });
         }
         return response;
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log('[ADR Graph] Loaded data:', data.nodes.length, 'nodes,', data.edges.length, 'edges');
         setGraphData(data);
         setLoading(false);
       })
       .catch((error) => {
+        if (error.name === 'AbortError') return;
         console.error('[ADR Graph] Error loading ADR graph data:', error);
         setLoading(false);
       });
+
+    return () => controller.abort();
   }, [baseUrl, currentVersion]);
 
   // Process and layout graph data
