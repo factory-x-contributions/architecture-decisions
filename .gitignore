@@ -118,6 +118,10 @@ buildNumber.properties
 **/*.lock
 **/*.tgz
 
+# AI tool user-specific settings (not shared)
+.claude/settings.local.json
+.cursor/settings.local.json
+
 # Docusaurus build output
 build/
 
