@@ -15,7 +15,7 @@ const path = require('node:path');
 const ROOT = path.join(__dirname, '..');
 const SKILLS_DIR = path.join(ROOT, '.ai', 'skills');
 
-// Claude Code expects skills at .claude/<name>/README.md
+// Claude Code expects skills at .claude/skills/<name>/SKILL.md
 // Cursor expects rules at .cursor/rules/<name>.mdc
 // Cline expects skills at .cline/skills/<name>.md
 const TARGETS = [
@@ -28,11 +28,11 @@ const skillDirs = fs.readdirSync(SKILLS_DIR, { withFileTypes: true })
   .filter(d => d.isDirectory())
   .filter(d => fs.existsSync(path.join(SKILLS_DIR, d.name, 'SKILL.md')));
 
-// Claude Code: .claude/<name>/README.md
+// Claude Code: .claude/skills/<name>/SKILL.md
 console.log('Claude Code:');
 for (const skill of skillDirs) {
   const src  = path.join(SKILLS_DIR, skill.name, 'SKILL.md');
-  const dest = path.join(ROOT, '.claude', skill.name, 'README.md');
+  const dest = path.join(ROOT, '.claude', 'skills', skill.name, 'SKILL.md');
 
   fs.mkdirSync(path.dirname(dest), { recursive: true });
 
@@ -43,7 +43,7 @@ for (const skill of skillDirs) {
   } catch {}
 
   fs.copyFileSync(src, dest);
-  console.log(`  .claude/${skill.name}/README.md`);
+  console.log(`  .claude/skills/${skill.name}/SKILL.md`);
 }
 
 // Cursor (.cursor/rules/<name>.mdc) and Cline (.cline/skills/<name>.md)
