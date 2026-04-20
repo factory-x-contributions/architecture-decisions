@@ -4,9 +4,14 @@ info:
   version: 1.0.0
   description: API for energy consumption and production forecasts
 
+tags:
+  - name: Forecast
+    description: Energy consumption and production forecast endpoints
+
 paths:
   /forecast/{assetId}:
     get:
+      tags: [Forecast]
       summary: Get energy forecast for an asset
       parameters:
 
@@ -56,6 +61,7 @@ paths:
           description: Asset not found
 
     post:
+      tags: [Forecast]
       summary: Submit historical data for forecast generation
       parameters:
 

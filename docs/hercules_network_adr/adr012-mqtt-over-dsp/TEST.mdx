@@ -1,24 +1,16 @@
 ---
 id: fx_adr012_test
 title: ADR 012 – Test Scenarios for MQTT over DSP
-sidebar_label: ADR 012 – Test Scenarios
+sidebar_label: Gherkin Test Scenarios
 description: BDD Gherkin test scenarios derived from the normative requirements of ADR 012 (MQTT over DSP).
 tags: [architecture_decision_records, network_adr, mqtt, testing, gherkin]
 ---
 
-## Test Scenarios
+import GherkinScenarios from '@site/src/components/GherkinScenarios/GherkinScenarios';
 
-The following Gherkin scenarios are derived from the normative requirements of [ADR 012](./README.md).
 
-Coverage:
 
-| Tag | Scope |
-|-----|-------|
-| `@smoke` | Critical happy-path scenarios |
-| `@edge` | Boundary and equivalence class cases |
-| `@negative` | Error handling and failure scenarios |
-
-```gherkin
+<GherkinScenarios>{`
 Feature: ADR 012 – MQTT over DSP
   As a dataspace participant
   I want to discover and connect to MQTT brokers through the Dataspace Protocol
@@ -52,9 +44,7 @@ Feature: ADR 012 – MQTT over DSP
 
   @smoke @ADR-012
   Scenario: Consumer connects to MQTT broker using username/password authentication (mqtt-usrpw)
-    Given a Consumer has received a DataAddress with credentials via
-      "https://w3id.org/dspace/2025/1/mqtt-pull/user" and
-      "https://w3id.org/dspace/2025/1/mqtt-pull/password"
+    Given a Consumer has received a DataAddress with credentials via "https://w3id.org/dspace/2025/1/mqtt-pull/user" and "https://w3id.org/dspace/2025/1/mqtt-pull/password"
     When the Consumer connects to the MQTT broker
     And passes the username and password in the MQTT CONNECT message
     Then the broker accepts the connection
@@ -144,4 +134,4 @@ Feature: ADR 012 – MQTT over DSP
     Given a Consumer holds incorrect credentials for "mqtt-usrpw" authentication
     When the Consumer sends a MQTT CONNECT with wrong username or password
     Then the broker returns a CONNACK with return code 5 (Connection Refused: Not Authorized)
-```
+`}</GherkinScenarios>
