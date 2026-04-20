@@ -1,9 +1,9 @@
 ---
-name: work
+name: fx-dev-cycle
 description: Assists with developing and shipping code. Detects uncommitted changes, creates GitHub issues, manages branches, runs human-in-the-loop browser review, and creates pull requests. Use when shipping work or processing the issue backlog.
 ---
 
-# Work
+# Dev Cycle
 
 ## Step 1: Detect mode
 

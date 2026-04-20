@@ -1,5 +1,5 @@
 ---
-name: review-adr
+name: fx-review-adr
 description: Reviews and quality-checks an existing Architecture Decision Record. Validates frontmatter, required sections, cross-references, normative language (RFC 2119), OpenAPI registration, and build integrity. Use when reviewing an ADR before merging.
 ---
 

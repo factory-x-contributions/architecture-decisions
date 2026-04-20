@@ -1,5 +1,5 @@
 ---
-name: new-adr
+name: fx-new-adr
 description: Creates a new Architecture Decision Record (ADR) for Factory-X. Interactively gathers type (Network 0xx / Use Case 1xx+), number, title, and metadata, then scaffolds the directory, README.md, and optional OpenAPI spec. Use when adding a new ADR to the documentation.
 ---
 

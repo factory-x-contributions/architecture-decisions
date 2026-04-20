@@ -1,5 +1,5 @@
 ---
-name: new-version
+name: fx-new-version
 description: Cuts a new Docusaurus documentation version. Runs pre-flight build, executes docusaurus docs:version, verifies versioned docs/sidebars/graph-data generation, and runs post-version build. Use when releasing a new documentation version.
 ---
 
