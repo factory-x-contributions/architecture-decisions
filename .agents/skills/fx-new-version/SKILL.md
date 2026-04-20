@@ -22,11 +22,14 @@ Ask via AskUserQuestion: "What label should the new version have?"
 
 ---
 
-## Step 3: Pre-flight build
+## Step 3: Pre-flight
 
-Run `npm run build` to ensure the current docs build cleanly before creating a version snapshot.
+Run the following two commands in order:
 
-If the build fails:
+1. `npx docusaurus gen-api-docs all` — generates `api/` directories inside `docs/` from OpenAPI YAML specs. This must run before snapshotting so the generated files are included in the version.
+2. `npm run build` — verifies the full site builds cleanly.
+
+If either command fails:
 - Report the errors
 - Do NOT proceed — a broken version snapshot should not be created
 - Ask the user to fix the issues first
@@ -38,7 +41,7 @@ If the build fails:
 Run: `npx docusaurus docs:version <label>`
 
 This will:
-- Copy `docs/` to `versioned_docs/version-<label>/`
+- Copy `docs/` (including all generated `api/` directories) to `versioned_docs/version-<label>/`
 - Copy `sidebars.js` to `versioned_sidebars/version-<label>-sidebars.json`
 - Add `<label>` to the front of `versions.json`
 
