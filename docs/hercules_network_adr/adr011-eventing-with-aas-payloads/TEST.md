@@ -1,0 +1,108 @@
+---
+id: fx_adr011_test
+title: ADR 011 – Test Scenarios for Eventing with AAS Payloads
+sidebar_label: ADR 011 – Test Scenarios
+description: BDD Gherkin test scenarios derived from the normative requirements of ADR 011 (Eventing with AAS Payloads).
+tags: [architecture_decision_records, network_adr, aas, eventing, testing, gherkin]
+---
+
+## Test Scenarios
+
+The following Gherkin scenarios are derived from the normative requirements of [ADR 011](./README.md).
+
+Coverage:
+
+| Tag | Scope |
+|-----|-------|
+| `@smoke` | Critical happy-path scenarios |
+| `@edge` | Boundary and equivalence class cases |
+| `@negative` | Error handling and failure scenarios |
+
+```gherkin
+Feature: ADR 011 – Eventing with AAS Payloads
+  As a Data Consumer
+  I want to be proactively notified about AAS resource changes via MQTT
+  So that I can react to events without synchronous polling of AAS APIs
+
+  # ─────────────────────────────────────────────
+  # SMOKE – Happy Path
+  # ─────────────────────────────────────────────
+
+  @smoke @ADR-011
+  Scenario: Provider exposes MQTT broker accepting connections via MQTT over WSS
+    Given a Data Provider that emits events on Asset Administration Shell resources
+    When a Consumer attempts to connect to the Provider's MQTT broker via "mqtt-wss" (MQTT over WSS)
+    Then the connection is accepted
+    And the broker responds with a CONNACK with return code 0 (Connection Accepted)
+
+  @smoke @ADR-011
+  Scenario: Provider exposes MQTT broker accepting connections via MQTT over TLS (mqtts)
+    Given a Data Provider that emits events on AAS resources
+    When a Consumer attempts to connect to the Provider's MQTT broker via "mqtts" (MQTT over TLS)
+    Then the connection is accepted
+    And the broker responds with a CONNACK with return code 0 (Connection Accepted)
+
+  @smoke @ADR-011
+  Scenario: MQTT message payload conforms to AAS async API format
+    Given a Consumer is subscribed to an AAS event topic on the Provider's MQTT broker
+    When the Provider emits an AAS Submodel change event
+    Then the received message payload conforms to the AAS async API specification
+    And the message can be parsed as a valid AAS Submodel update notification
+
+  @smoke @ADR-011
+  Scenario: Provider MQTT broker version is MQTT 3.1.1
+    Given a Consumer connects to the Provider's MQTT broker
+    When the CONNECT packet is sent with protocol version 3.1.1
+    Then the broker accepts the connection
+    And does not downgrade or reject based on protocol version
+
+  # ─────────────────────────────────────────────
+  # EDGE – Boundary / Equivalence Cases
+  # ─────────────────────────────────────────────
+
+  @edge @ADR-011
+  Scenario: Service metadata optionally includes the MQTT-AAS type annotation
+    Given a Provider's DSP Catalog entry for an MQTT-AAS service
+    When the Consumer inspects the Dataset metadata
+    Then if present, the "http://purl.org/dc/terms/type" property contains
+      "https://w3id.org/factoryx/types/mqtt-aas"
+    And if absent, the Consumer can still connect and consume messages if endpoint is known
+
+  @edge @ADR-011
+  Scenario: Multiple Consumers subscribe to the same MQTT topic simultaneously
+    Given two Consumers connect to the Provider's MQTT broker
+    When both Consumers subscribe to the same AAS event topic
+    And the Provider emits a single AAS change event
+    Then both Consumers independently receive the event message
+
+  @edge @ADR-011
+  Scenario: MQTT message "data" property usage is agreed per use-case
+    Given a use-case agreement specifying the usage of the "data" property in event messages
+    When the Provider emits an AAS event message
+    Then the "data" property is present in the payload if required by the use-case agreement
+    And the content matches the agreed-upon schema
+
+  # ─────────────────────────────────────────────
+  # NEGATIVE – Failure / Error Cases
+  # ─────────────────────────────────────────────
+
+  @negative @ADR-011
+  Scenario: Consumer attempts MQTT over unencrypted TCP (rejected)
+    Given a Provider's MQTT broker only supports WSS and TLS transports
+    When a Consumer attempts to connect via unencrypted TCP (mqtt://)
+    Then the connection is refused
+    And the broker returns an appropriate rejection
+
+  @negative @ADR-011
+  Scenario: Consumer receives event with payload not conforming to AAS async API
+    Given a misconfigured Provider emits a message with an arbitrary JSON payload
+    When the Consumer receives the message
+    Then the Consumer's AAS async API schema validation fails
+    And the Consumer logs a payload non-compliance error
+
+  @negative @ADR-011
+  Scenario: Consumer connects without authentication (if auth is required by use-case)
+    Given a Provider's MQTT broker is configured to require authentication
+    When a Consumer attempts to connect without credentials
+    Then the broker returns a CONNACK with return code 5 (Connection Refused: Not Authorized)
+```
