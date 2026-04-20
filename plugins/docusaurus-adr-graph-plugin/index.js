@@ -18,7 +18,7 @@ module.exports = function (context) {
       );
       console.log(`  Upcoming: ${currentData.nodes.length} nodes, ${currentData.edges.length} edges`);
 
-      // Build for each versioned docs - store paths without version prefix
+      // Build for each versioned docs - only ADRs frozen in that release snapshot
       const versions = getVersions(siteDir);
       for (const version of versions) {
         const versionedDocsDir = path.join(siteDir, 'versioned_docs', `version-${version}`);
@@ -49,7 +49,7 @@ module.exports = function (context) {
         JSON.stringify(currentData, null, 2)
       );
 
-      // Build for each versioned docs - store paths without version prefix
+      // Build for each versioned docs - only ADRs frozen in that release snapshot
       const versions = getVersions(siteDir);
       for (const version of versions) {
         const versionedDocsDir = path.join(siteDir, 'versioned_docs', `version-${version}`);

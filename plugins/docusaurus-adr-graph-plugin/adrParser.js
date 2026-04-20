@@ -157,49 +157,55 @@ function extractADRSlug(filePath) {
 }
 
 /**
- * Build graph data structure from ADR files
+ * Parse ADR files from a directory into a Map keyed by ADR id.
  */
-function buildGraphData(docsDir, versionPrefix = '/docs') {
-  const adrFiles = findADRFiles(docsDir);
-  const nodes = [];
-  const edges = [];
-  const referenceCountMap = new Map();
-
-  for (const filePath of adrFiles) {
+function parseADRsFromDir(dir, versionPrefix) {
+  const adrMap = new Map();
+  for (const filePath of findADRFiles(dir)) {
     const adr = parseADRFile(filePath, versionPrefix);
     if (adr) {
-      nodes.push({
-        id: adr.id,
-        number: adr.number,
-        title: adr.title,
-        project: adr.project,
-        category: adr.category,
-        tags: adr.tags,
-        path: adr.path,
-        referenceCount: 0
-      });
-      referenceCountMap.set(adr.id, adr.references);
+      adrMap.set(adr.id, adr);
     }
   }
+  return adrMap;
+}
 
+/**
+ * Build edges from a reference map and return edges + incoming reference counts.
+ */
+function buildEdges(referenceCountMap, nodeIds) {
+  const edges = [];
   const incomingReferences = new Map();
 
   for (const [sourceId, targetIds] of referenceCountMap.entries()) {
     for (const targetNumber of targetIds) {
       const targetId = `adr${targetNumber}`;
-
-      // Only create edge if target exists
-      if (nodes.some(n => n.id === targetId)) {
-        edges.push({
-          id: `${sourceId}-${targetId}`,
-          source: sourceId,
-          target: targetId,
-          type: 'smoothstep'
-        });
+      if (nodeIds.has(targetId)) {
+        edges.push({ id: `${sourceId}-${targetId}`, source: sourceId, target: targetId, type: 'smoothstep' });
         incomingReferences.set(targetId, (incomingReferences.get(targetId) || 0) + 1);
       }
     }
   }
+
+  return { edges, incomingReferences };
+}
+
+/**
+ * Build graph data structure from ADR files in the given directory.
+ */
+function buildGraphData(docsDir, versionPrefix = '/docs') {
+  const adrMap = parseADRsFromDir(docsDir, versionPrefix);
+
+  const referenceCountMap = new Map();
+  const nodes = [];
+
+  for (const adr of adrMap.values()) {
+    nodes.push({ id: adr.id, number: adr.number, title: adr.title, project: adr.project, category: adr.category, tags: adr.tags, path: adr.path, referenceCount: 0 });
+    referenceCountMap.set(adr.id, adr.references);
+  }
+
+  const nodeIds = new Set(nodes.map(n => n.id));
+  const { edges, incomingReferences } = buildEdges(referenceCountMap, nodeIds);
 
   for (const node of nodes) {
     node.referenceCount = incomingReferences.get(node.id) || 0;

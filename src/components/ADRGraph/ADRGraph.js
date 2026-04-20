@@ -14,7 +14,7 @@ import styles from './ADRGraph.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useColorMode } from '@docusaurus/theme-common';
 import { useLocation } from '@docusaurus/router';
-import { useVersions } from '@docusaurus/plugin-content-docs/client';
+import { useVersions, useDocsPreferredVersion } from '@docusaurus/plugin-content-docs/client';
 
 const nodeTypes = {
   custom: CustomNode
@@ -72,61 +72,28 @@ export default function ADRGraph() {
 
   const baseUrl = useBaseUrl('/');
 
-  // Get versions from Docusaurus plugin (works in both dev and production)
+  // Get versions and user preference from Docusaurus plugin
   const allVersions = useVersions('default');
-  // Filter to only released versions (exclude "current" which is upcoming/unreleased)
-  const availableVersions = allVersions
-    .filter(v => v.name !== 'current')
-    .map(v => v.name);
-  // Get the latest released version (isLast=true means latest released version)
   const latestReleasedVersion = allVersions.find(v => v.isLast);
-  const latestVersion = latestReleasedVersion ? latestReleasedVersion.name : (availableVersions.length > 0 ? availableVersions[0] : null);
+  const latestVersion = latestReleasedVersion ? latestReleasedVersion.name : null;
 
-  // Get current version from localStorage or default to latest
-  const getVersion = useCallback(() => {
-    // Check URL parameter first (e.g., /adr-graph?version=2025-12)
+  // useDocsPreferredVersion is reactive: updates automatically when the user
+  // changes the version in the navbar, no polling needed.
+  const { preferredVersion } = useDocsPreferredVersion('default');
+
+  // Determine which version's graph data to load.
+  // Priority: URL param > Docusaurus preferred version > 'current' (Upcoming)
+  useEffect(() => {
     const params = new URLSearchParams(location.search);
     const versionParam = params.get('version');
     if (versionParam) {
-      return versionParam;
+      setCurrentVersion(versionParam);
+      return;
     }
-
-    // Try to get version from localStorage (set by Docusaurus version switcher)
-    try {
-      const preferredVersion = localStorage.getItem('docs-preferred-version-default');
-      if (preferredVersion) {
-        return preferredVersion;
-      }
-    } catch (e) {
-      // localStorage might not be available
-    }
-
-    // Default to the latest released version (2025-12), same as Docusaurus navbar
-    return latestVersion || '2025-12';
-  }, [location.search, latestVersion]);
-
-  // Initialize version
-  useEffect(() => {
-    setCurrentVersion(getVersion());
-  }, [getVersion]);
-
-  // Listen for storage changes (when version is changed in navbar)
-  useEffect(() => {
-    // Poll for localStorage changes (storage event doesn't fire in same tab)
-    const pollInterval = setInterval(() => {
-      const newVersion = getVersion();
-      setCurrentVersion(prev => {
-        if (prev !== newVersion) {
-          return newVersion;
-        }
-        return prev;
-      });
-    }, 500);
-
-    return () => {
-      clearInterval(pollInterval);
-    };
-  }, [getVersion]);
+    // preferredVersion is null on first render (SSR-safe), then resolves to the
+    // stored value. Default to 'current' (Upcoming) so new ADRs are always visible.
+    setCurrentVersion(preferredVersion ? preferredVersion.name : 'current');
+  }, [location.search, preferredVersion]);
 
   // Load graph data based on docs version
   useEffect(() => {
@@ -134,6 +101,9 @@ export default function ADRGraph() {
     if (currentVersion === null) {
       return;
     }
+
+    const controller = new AbortController();
+    const { signal } = controller;
 
     setLoading(true);
 
@@ -143,29 +113,27 @@ export default function ADRGraph() {
       : `adr-graph-data-${currentVersion}.json`;
 
     const fullUrl = `${baseUrl}${dataFile}`;
-    console.log('[ADR Graph] Loading data for version:', currentVersion);
-    console.log('[ADR Graph] Fetching URL:', fullUrl);
 
-    fetch(fullUrl)
+    fetch(fullUrl, { signal })
       .then((response) => {
-        console.log('[ADR Graph] Response status:', response.status, response.ok);
         if (!response.ok) {
-          console.warn('[ADR Graph] Failed to load versioned data, falling back to current');
           // Fallback to current version if versioned file doesn't exist
-          return fetch(`${baseUrl}adr-graph-data.json`);
+          return fetch(`${baseUrl}adr-graph-data.json`, { signal });
         }
         return response;
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log('[ADR Graph] Loaded data:', data.nodes.length, 'nodes,', data.edges.length, 'edges');
         setGraphData(data);
         setLoading(false);
       })
       .catch((error) => {
+        if (error.name === 'AbortError') return;
         console.error('[ADR Graph] Error loading ADR graph data:', error);
         setLoading(false);
       });
+
+    return () => controller.abort();
   }, [baseUrl, currentVersion]);
 
   // Process and layout graph data
