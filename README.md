@@ -3,13 +3,26 @@ SPDX-FileCopyrightText: 2024-2026 Contributors to the Factory-X project
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
+<div align="center">
+
+<img src="https://factory-x.org/wp-content/uploads//factory-x-logo.svg" alt="Factory-X Logo" width="140" />
+
 # Factory-X Architecture Decisions
 
-[![Docusaurus](https://img.shields.io/badge/Built%20with-Docusaurus%203-green?logo=docusaurus)](https://docusaurus.io/)
+Architecture Decision Records for the Factory-X consortium
+
+[![Live Website](https://img.shields.io/badge/🌐%20LIVE%20WEBSITE-factory--x--contributions.github.io-1e3a5f?style=for-the-badge)](https://factory-x-contributions.github.io/architecture-decisions/)
+
+[![Build](https://github.com/factory-x-contributions/architecture-decisions/actions/workflows/build-and-deploy-gh-pages.yaml/badge.svg)](https://github.com/factory-x-contributions/architecture-decisions/actions/workflows/build-and-deploy-gh-pages.yaml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENCE)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](LICENCE_non-code)
+[![Docusaurus](https://img.shields.io/badge/Docusaurus-3.10.0-green?logo=docusaurus)](https://docusaurus.io/)
 
-This repository contains the released **Architecture Decision Records (ADRs)** made in the Factory-X consortium.
+[Getting Started](#getting-started) • [ADR Types](#adr-types) • [ADR Graph](#adr-graph) • [OpenAPI](#openapi-integration) • [Contributing](#contributing) • [License](#licensing-and-copyright)
+
+</div>
+
+---
 
 ## Getting Started
 
@@ -33,10 +46,18 @@ For detailed instructions on how to add new Architecture Decision Records, see *
 
 ### ADR Types
 
-| Type         | Location                       | Template                                                         |
-|--------------|--------------------------------|------------------------------------------------------------------|
-| Network ADR  | `docs/hercules_network_adr/`   | [Network ADR Template](./CONTRIBUTING.md#network-adr-template)   |
-| Use Case ADR | `docs/hercules_use_case_adr/`  | [Use Case ADR Template](./CONTRIBUTING.md#use-case-adr-template) |
+The repository is organized by consortium. Each consortium has its own section in the documentation.
+
+| Consortium | Type         | Location                       | Template                                                         |
+|------------|--------------|--------------------------------|------------------------------------------------------------------|
+| Hercules   | Network ADR  | `docs/hercules_network_adr/`   | [Network ADR Template](./CONTRIBUTING.md#network-adr-template)   |
+| Hercules   | Use Case ADR | `docs/hercules_use_case_adr/`  | [Use Case ADR Template](./CONTRIBUTING.md#use-case-adr-template) |
+| Leo        | _(upcoming)_ | `docs/leo/`                    | —                                                                |
+| Orion      | _(upcoming)_ | `docs/orion/`                  | —                                                                |
+
+### ADR Graph
+
+The site includes an interactive **ADR Graph** (`/adr-graph`) that visualizes relationships between ADRs and highlights impact when hovering over a node.
 
 ### OpenAPI Integration
 
@@ -48,8 +69,8 @@ docs/hercules_use_case_adr/<adr-folder>/resources/
 
 # 2. Register in openapi-configs.js
 
-# 3. Generate API docs
-npm run build
+# 3. API docs are generated automatically on npm start and npm run build
+npm start
 ```
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md#adding-openapi-documentation) for details.
