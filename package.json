@@ -8,6 +8,8 @@
     "start": "docusaurus start",
     "prebuild": "docusaurus gen-api-docs all",
     "build": "docusaurus build",
+    "predocs:version": "docusaurus gen-api-docs all",
+    "docs:version": "docusaurus docs:version",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
