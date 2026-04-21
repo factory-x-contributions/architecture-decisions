@@ -1,24 +1,16 @@
 ---
 id: fx_adr008_test
 title: ADR 008 – Test Scenarios for AAS Profile for Factory-X
-sidebar_label: ADR 008 – Test Scenarios
+sidebar_label: Gherkin Test Scenarios
 description: BDD Gherkin test scenarios derived from the normative requirements of ADR 008 (Asset Administration Shell Profile for Factory-X).
 tags: [architecture_decision_records, network_adr, aas, testing, gherkin]
 ---
 
-## Test Scenarios
+import GherkinScenarios from '@site/src/components/GherkinScenarios/GherkinScenarios';
 
-The following Gherkin scenarios are derived from the normative requirements of [ADR 008](./README.md).
 
-Coverage:
 
-| Tag | Scope |
-|-----|-------|
-| `@smoke` | Critical happy-path scenarios |
-| `@edge` | Boundary and equivalence class cases |
-| `@negative` | Error handling and failure scenarios |
-
-```gherkin
+<GherkinScenarios>{`
 Feature: ADR 008 – Asset Administration Shell Profile for Factory-X
   As a Data Consumer
   I want to discover and retrieve AAS Submodels from a Data Provider following a defined profile
@@ -32,8 +24,7 @@ Feature: ADR 008 – Asset Administration Shell Profile for Factory-X
   Scenario: Provider exposes AAS Registry and Discovery from a common URL path
     Given a Data Provider has deployed AAS services
     When the Provider's base URL is queried
-    Then both the "AssetAdministrationShellRegistryServiceSpecification-SSP2" and
-      the "DiscoveryServiceSpecification-SSP1" endpoints are served from the same URL path
+    Then both the "AssetAdministrationShellRegistryServiceSpecification-SSP2" and the "DiscoveryServiceSpecification-SSP1" endpoints are served from the same URL path
     And both endpoints respond with HTTP 200
 
   @smoke @ADR-008
@@ -113,4 +104,4 @@ Feature: ADR 008 – Asset Administration Shell Profile for Factory-X
     When a Consumer fetches the Submodel
     Then the Consumer's validation of the response fails
     And an appropriate schema violation error is raised
-```
+`}</GherkinScenarios>

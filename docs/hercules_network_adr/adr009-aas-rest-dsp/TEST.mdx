@@ -1,24 +1,16 @@
 ---
 id: fx_adr009_test
 title: ADR 009 – Test Scenarios for Discovery of AAS Services via DSP
-sidebar_label: ADR 009 – Test Scenarios
+sidebar_label: Gherkin Test Scenarios
 description: BDD Gherkin test scenarios derived from the normative requirements of ADR 009 (Discovery of AAS Services via DSP).
 tags: [architecture_decision_records, network_adr, aas, testing, gherkin]
 ---
 
-## Test Scenarios
+import GherkinScenarios from '@site/src/components/GherkinScenarios/GherkinScenarios';
 
-The following Gherkin scenarios are derived from the normative requirements of [ADR 009](./README.md).
 
-Coverage:
 
-| Tag | Scope |
-|-----|-------|
-| `@smoke` | Critical happy-path scenarios |
-| `@edge` | Boundary and equivalence class cases |
-| `@negative` | Error handling and failure scenarios |
-
-```gherkin
+<GherkinScenarios>{`
 Feature: ADR 009 – Discovery of AAS Services via DSP
   As a Data Consumer
   I want to discover AAS Digital Twin Registries and Submodels through the Dataspace Protocol
@@ -33,8 +25,7 @@ Feature: ADR 009 – Discovery of AAS Services via DSP
     Given a Data Provider has a Digital Twin Registry (DTR)
     When a Consumer requests the Provider's DSP Catalog
     Then the Catalog contains a "Dataset" representing the Digital Twin Registry
-    And the Dataset has annotation "http://purl.org/dc/terms/type" equal to
-      "https://w3id.org/catenax/taxonomy#DigitalTwinRegistry"
+    And the Dataset has annotation "http://purl.org/dc/terms/type" equal to "https://w3id.org/catenax/taxonomy#DigitalTwinRegistry"
 
   @smoke @ADR-009
   Scenario: Consumer obtains DTR URL after successful authentication
@@ -82,8 +73,7 @@ Feature: ADR 009 – Discovery of AAS Services via DSP
 
   @edge @ADR-009
   Scenario: subprotocolBody key-value pairs are correctly parsed with "=" assignment and ";" separator
-    Given a SubmodelDescriptor endpoint has a "subprotocolBody" value
-      "id=my-dataset-id;dspEndpoint=https://provider.example.com/protocol"
+    Given a SubmodelDescriptor endpoint has a "subprotocolBody" value "id=my-dataset-id;dspEndpoint=https://provider.example.com/protocol"
     When a Consumer parses the subprotocolBody
     Then the "id" is extracted as "my-dataset-id"
     And the "dspEndpoint" is extracted as "https://provider.example.com/protocol"
@@ -115,9 +105,8 @@ Feature: ADR 009 – Discovery of AAS Services via DSP
 
   @negative @ADR-009
   Scenario: subprotocolBody is malformed (missing required key)
-    Given a SubmodelDescriptor endpoint has subprotocolBody "dspEndpoint=https://provider.example.com"
-      (missing the "id" key)
+    Given a SubmodelDescriptor endpoint has subprotocolBody "dspEndpoint=https://provider.example.com" (missing the "id" key)
     When a Consumer parses the subprotocolBody
     Then the Consumer detects the missing "id" key
     And reports a configuration error for the SubmodelDescriptor
-```
+`}</GherkinScenarios>

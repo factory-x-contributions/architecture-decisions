@@ -1,24 +1,16 @@
 ---
 id: fx_adr002_test
 title: ADR 002 – Test Scenarios for Cross-Company Authorization and Discovery
-sidebar_label: ADR 002 – Test Scenarios
+sidebar_label: Gherkin Test Scenarios
 description: BDD Gherkin test scenarios derived from the normative requirements of ADR 002 (Cross-Company Authorization and Discovery).
 tags: [architecture_decision_records, network_adr, security, testing, gherkin]
 ---
 
-## Test Scenarios
+import GherkinScenarios from '@site/src/components/GherkinScenarios/GherkinScenarios';
 
-The following Gherkin scenarios are derived from the normative requirements of [ADR 002](./README.md).
 
-Coverage:
 
-| Tag | Scope |
-|-----|-------|
-| `@smoke` | Critical happy-path scenarios |
-| `@edge` | Boundary and equivalence class cases |
-| `@negative` | Error handling and failure scenarios |
-
-```gherkin
+<GherkinScenarios>{`
 Feature: ADR 002 – Cross-Company Authorization and Discovery
   As a dataspace participant
   I want to discover and access data offers across company boundaries using DSP 2025-1
@@ -115,4 +107,4 @@ Feature: ADR 002 – Cross-Company Authorization and Discovery
     Given a Consumer has not negotiated a contract with the Provider
     When the Consumer attempts to access a data endpoint directly
     Then the Provider returns HTTP 403 Forbidden
-```
+`}</GherkinScenarios>

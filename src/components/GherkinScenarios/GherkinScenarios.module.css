@@ -1,0 +1,389 @@
+/* ── Toolbar (stats + filter) ─────────────────────────────── */
+.feature {
+  margin: 1rem 0;
+  font-family: var(--ifm-font-family-base);
+}
+
+.intro {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  background: var(--ifm-color-emphasis-100);
+  border-left: 3px solid var(--ifm-color-primary);
+  border-radius: 0 var(--ifm-card-border-radius, 0.5rem) var(--ifm-card-border-radius, 0.5rem) 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: var(--ifm-card-border-radius, 0.5rem);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.statNum {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+}
+
+.statTotal {
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
+  padding-left: 0.4rem;
+  border-left: 1px solid var(--ifm-color-emphasis-300);
+  margin-left: 0.2rem;
+}
+
+/* ── Filter bar ───────────────────────────────────────────── */
+.filterBar {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.filterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.filterBtn:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.filterBtnActive {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.filterBtnActive:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+.filterCount {
+  background: rgba(255,255,255,0.25);
+  border-radius: 999px;
+  padding: 0 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  min-width: 1.2rem;
+  text-align: center;
+}
+
+.filterBtn:not(.filterBtnActive) .filterCount {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* ── Tag badges ───────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.badgeSmoke    { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.badgeEdge     { background-color: #fff3cd; color: #856404; border: 1px solid #ffc107; }
+.badgeNegative { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.badgeAdr {
+  background-color: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  font-size: 0.68rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+[data-theme='dark'] .badgeSmoke    { background-color: #1a3d2b; color: #6fcf97; border-color: #2d6a4f; }
+[data-theme='dark'] .badgeEdge     { background-color: #3d3000; color: #f6c90e; border-color: #7a5c00; }
+[data-theme='dark'] .badgeNegative { background-color: #3d0a10; color: #f28b82; border-color: #7a1a22; }
+
+/* ── Section ──────────────────────────────────────────────── */
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-card-border-radius, 0.5rem);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+  margin-bottom: 0.6rem;
+}
+
+.sectionHeader:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.sectionTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+  flex: 1;
+}
+
+.sectionCount {
+  font-size: 0.75rem;
+  color: var(--ifm-color-emphasis-600);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+}
+
+.sectionChevron {
+  font-size: 0.65rem;
+  color: var(--ifm-color-emphasis-500);
+  margin-left: 0.25rem;
+}
+
+.sectionBody {
+  padding: 0 0.1rem;
+}
+
+/* ── Scenario card (collapsible) ──────────────────────────── */
+.scenario {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-card-border-radius, 0.5rem);
+  margin-bottom: 0.6rem;
+  background: var(--ifm-background-surface-color);
+  overflow: hidden;
+}
+
+.scenario[open] {
+  box-shadow: var(--ifm-global-shadow-lw);
+}
+
+.scenarioIsOutline {
+  border-left: 3px solid var(--ifm-color-primary);
+}
+
+.scenarioSummary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background 0.12s;
+}
+
+.scenarioSummary::-webkit-details-marker { display: none; }
+
+.scenarioSummary:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.scenario[open] .scenarioSummary {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-color-emphasis-100);
+}
+
+.scenarioTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+  flex: 1;
+}
+
+.scenarioMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.stepCount {
+  font-size: 0.72rem;
+  color: var(--ifm-color-emphasis-500);
+  white-space: nowrap;
+}
+
+.scenarioBody {
+  padding: 0.75rem 1rem 0.85rem;
+}
+
+/* ── Steps ────────────────────────────────────────────────── */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.step {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.08rem 0;
+  color: var(--ifm-font-color-base);
+}
+
+.keyword {
+  font-weight: 700;
+  flex-shrink: 0;
+  min-width: 3.8rem;
+  text-align: right;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.82rem;
+}
+
+.keywordGiven { color: #1565c0; }
+.keywordWhen  { color: #e65100; }
+.keywordThen  { color: #2e7d32; }
+.keywordAnd   { color: var(--ifm-color-emphasis-600); }
+.keywordBut   { color: var(--ifm-color-emphasis-600); }
+
+[data-theme='dark'] .keywordGiven { color: #64b5f6; }
+[data-theme='dark'] .keywordWhen  { color: #ffb74d; }
+[data-theme='dark'] .keywordThen  { color: #81c784; }
+
+.stepText {
+  flex: 1;
+  word-break: break-word;
+}
+
+/* ── Examples table ───────────────────────────────────────── */
+.examplesBlock {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--ifm-color-emphasis-300);
+}
+
+.examplesLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0.4rem;
+}
+
+.examplesTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.examplesTable th {
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-font-color-base);
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  text-align: left;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.examplesTable td {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.examplesTable tr:nth-child(even) td {
+  background: var(--ifm-color-emphasis-100);
+}
+
+/* ── Copy all row ─────────────────────────────────────────── */
+.copyAllRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.copyAllBtn {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.copyAllBtn:hover {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+}
+
+/* ── Copy button ──────────────────────────────────────────── */
+.copyBtn {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-emphasis-600);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.copyBtn:hover {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+}
+
+.copyBtnSuccess {
+  border-color: #1b5e20;
+  color: #1b5e20;
+  background: #d4edda;
+}
+
+[data-theme='dark'] .copyBtnSuccess {
+  border-color: #81c784;
+  color: #81c784;
+  background: #1a3d2b;
+}

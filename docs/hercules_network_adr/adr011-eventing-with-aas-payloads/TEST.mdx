@@ -1,24 +1,16 @@
 ---
 id: fx_adr011_test
 title: ADR 011 – Test Scenarios for Eventing with AAS Payloads
-sidebar_label: ADR 011 – Test Scenarios
+sidebar_label: Gherkin Test Scenarios
 description: BDD Gherkin test scenarios derived from the normative requirements of ADR 011 (Eventing with AAS Payloads).
 tags: [architecture_decision_records, network_adr, aas, eventing, testing, gherkin]
 ---
 
-## Test Scenarios
+import GherkinScenarios from '@site/src/components/GherkinScenarios/GherkinScenarios';
 
-The following Gherkin scenarios are derived from the normative requirements of [ADR 011](./README.md).
 
-Coverage:
 
-| Tag | Scope |
-|-----|-------|
-| `@smoke` | Critical happy-path scenarios |
-| `@edge` | Boundary and equivalence class cases |
-| `@negative` | Error handling and failure scenarios |
-
-```gherkin
+<GherkinScenarios>{`
 Feature: ADR 011 – Eventing with AAS Payloads
   As a Data Consumer
   I want to be proactively notified about AAS resource changes via MQTT
@@ -64,8 +56,7 @@ Feature: ADR 011 – Eventing with AAS Payloads
   Scenario: Service metadata optionally includes the MQTT-AAS type annotation
     Given a Provider's DSP Catalog entry for an MQTT-AAS service
     When the Consumer inspects the Dataset metadata
-    Then if present, the "http://purl.org/dc/terms/type" property contains
-      "https://w3id.org/factoryx/types/mqtt-aas"
+    Then if present, the "http://purl.org/dc/terms/type" property contains "https://w3id.org/factoryx/types/mqtt-aas"
     And if absent, the Consumer can still connect and consume messages if endpoint is known
 
   @edge @ADR-011
@@ -105,4 +96,4 @@ Feature: ADR 011 – Eventing with AAS Payloads
     Given a Provider's MQTT broker is configured to require authentication
     When a Consumer attempts to connect without credentials
     Then the broker returns a CONNACK with return code 5 (Connection Refused: Not Authorized)
-```
+`}</GherkinScenarios>
