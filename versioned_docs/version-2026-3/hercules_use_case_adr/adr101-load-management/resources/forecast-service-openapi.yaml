@@ -1,0 +1,120 @@
+openapi: 3.0.3
+info:
+  title: Energy Forecast Service API
+  version: 1.0.0
+  description: API for energy consumption and production forecasts
+
+paths:
+  /forecast/{assetId}:
+    get:
+      summary: Get energy forecast for an asset
+      parameters:
+
+        - name: assetId
+
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The globalAssetId of the time series set
+
+        - name: from
+
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: Start timestamp (ISO 8601)
+
+        - name: to
+
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: End timestamp (ISO 8601)
+
+        - name: resolution
+
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [PT15M, PT1H, P1D]
+            default: PT1H
+          description: Time resolution (ISO 8601 duration)
+      responses:
+        '200':
+          description: Successful forecast response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForecastResponse'
+        '404':
+          description: Asset not found
+
+    post:
+      summary: Submit historical data for forecast generation
+      parameters:
+
+        - name: assetId
+
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TimeSeriesInput'
+      responses:
+        '202':
+          description: Forecast generation initiated
+        '400':
+          description: Invalid input data
+
+components:
+  schemas:
+    ForecastResponse:
+      type: object
+      properties:
+        assetId:
+          type: string
+        forecasts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ForecastPoint'
+
+    ForecastPoint:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        value:
+          type: number
+          format: double
+        unit:
+          type: string
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+
+    TimeSeriesInput:
+      type: object
+      properties:
+        dataPoints:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              value:
+                type: number
