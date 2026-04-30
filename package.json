@@ -36,7 +36,7 @@
     "reactflow": "^11.11.4"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.10.0",
+    "@docusaurus/module-type-aliases": "3.10.1",
     "@docusaurus/types": "3.10.0"
   },
   "browserslist": {
