@@ -44,7 +44,7 @@ Multiple scenarios can be supported, but at least scenario 1 MUST be supported.
 
 #### Scenario 1 - Catena-X Quality Notifications
 
-The Traceability Use Case is based on the results of the project Catena-X. This includes the support for quality notifications between partners in the supply chain.
+The Traceability Use Case is based in the Catena-X dataspace standards. This includes the support for quality notifications between partners in the supply chain.
 
 The following standards MUST be implemented for Scenario 1:
 
