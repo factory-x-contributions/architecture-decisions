@@ -48,7 +48,7 @@ The Traceability Use Case is based in the Catena-X dataspace standards. This inc
 
 The following standards MUST be implemented for Scenario 1:
 
-| Submodel/Catena-X standard                  | Version | Link                                                   |
+| Submodel/Catena-X standard                  | Version | Reference                                              |
 | ------------------------------------------- | ------- | ------------------------------------------------------ |
 | CX-0125 Traceability Use Case               | 2.2.1   | https://catenax-ev.github.io/docs/standards/CX-0125-TraceabilityUseCase |
 | CX-0127 Industry Core: Part Instance        | 2.0.2   | https://catenax-ev.github.io/docs/standards/CX-0127-IndustryCorePartInstance |
@@ -56,22 +56,26 @@ The following standards MUST be implemented for Scenario 1:
 
 #### Scenario 2 - Exchange of quality data
 
-A common scenario is the exchange of quality related product data across the supply chain. The following sub models are recommended to be used:
+A common scenario is the exchange of quality related product data across the supply chain. This is an OPTIONAL scenario.
 
-| Submodel/Catena-X standard                  | Version | Link                                                   |
-| ------------------------------------------- | ------- | ------------------------------------------------------ |
-| IDTA-02049 Quality Control for Machining    | 1.0     | https://github.com/admin-shell-io/submodel-templates/tree/main/published/Quality%20Control%20for%20Machining/1/0 |
-| IDTA-02050 Purchase Order                   | 1.0     | https://github.com/admin-shell-io/submodel-templates/tree/main/published/Purchase%20Order/1/0 |
+The following submodels MAY or MUST be used (see status column for details):
+
+| Submodel                                    | Version | Status   | Reference                                              |
+| ------------------------------------------- | ------- | -------- | ------------------------------------------------------ |
+| IDTA-02049 Quality Control for Machining    | 1.0     | Required | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Quality%20Control%20for%20Machining/1/0) |
+| IDTA-02050 Purchase Order                   | 1.0     | Optional | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Purchase%20Order/1/0) |
 
 
 #### Scenario 3 - Exchange of process data
 
-Another scenario is the exchange of process related data. The following sub models are recommended:
+Another scenario is the exchange of process related data. This is an OPTIONAL scenario.
 
-| Submodel/Catena-X standard                       | Version | Link                                                   |
-| ------------------------------------------------ | ------- | ------------------------------------------------------ |
-| IDTA-02008 Time Series Data                      | 1.1     | https://github.com/admin-shell-io/submodel-templates/tree/main/published/Time%20Series%20Data/1/1 |
-| IDTA-02031-2 Process Parameters Part 2: Instance | 1.0     | https://github.com/admin-shell-io/submodel-templates/tree/main/published/Process%20Parameters%20Instance/1/0 |
+The following submodels MAY or MUST be used (see status column for details):
+
+| Submodel                                         | Version | Status   | Reference                                              |
+| ------------------------------------------------ | ------- | -------- | ------------------------------------------------------ |
+| IDTA-02031-2 Process Parameters Part 2: Instance | 1.0     | Required | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Process%20Parameters%20Instance/1/0) |
+| IDTA-02008 Time Series Data                      | 1.1     | Optional | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Time%20Series%20Data/1/1) |
 
 
 ## Authentication and Authorization
