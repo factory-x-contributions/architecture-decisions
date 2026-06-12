@@ -1,6 +1,6 @@
 ---
 id: fx_adr102
-title: ADR 102 – Manufacturing as a Service Version 0.1.0
+title: ADR 102 – Manufacturing as a Service Version 0.1.1
 tags:
   - architecture_decision_records
   - API
@@ -27,7 +27,6 @@ The Data Provider MUST expose the endpoints according to the following Architect
 | ADR 003 – Authentication for Dataspaces Version 0.2.0                    | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr003-authentication | 
 | ADR 008 – Asset Administration Shell Profile for Factory-X Version 0.2.0 | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr008-aas-profile | 
 | ADR 009 – Discovery of AAS Services via DSP Version 0.2.0                | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr009-aas-rest-dsp | 
-| 
 
 ### Data Consumer
 
@@ -37,7 +36,6 @@ The Data Consumer MUST expose the endpoints according to the following Architect
 | ------------------- | ------------ | ------------------------------------------------------ | 
 | ADR 002 – Cross-Company Authorization and Discovery Version 0.2.0        | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr002-authorization-discovery | 
 | ADR 003 – Authentication for Dataspaces Version 0.2.0                    | 0.2.0 | https://factory-x-contributions.github.io/architecture-decisions/docs/hercules_network_adr/adr003-authentication | 
-| 
 
 ## Data Models
 
@@ -55,7 +53,7 @@ The following submodels may be used for the Manufacturing as a Service use case.
 | Standard                   | Version | Reference                                                                                                                   | Affiliation   | Required in scenario   |
 | -------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Digital Nameplate for industrial equipment        | 3.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Digital%20nameplate/3/0)  | Company, Factory, Machine, Product | Scenario 1, 2, 3 |
-| Capability Description        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/development/Capability/1/0)  | Factory, Machine, Product | Scenario 1 |
+| Capability Description        | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Capability%20Description/1/0)  | Factory, Machine, Product | Scenario 1 |
 | Purchase Order       | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Purchase%20Order/1/0)  | Product | Scenario 2 |
 | Quality Control for Machining       | 1.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Quality%20Control%20for%20Machining/1/0)  | Product | Scenario 3 |
 | Handover Documentation        | 2.0  | [IDTA Submodel Template](https://github.com/admin-shell-io/submodel-templates/tree/main/published/Handover%20Documentation/2/0)  | Factory, Machine, Product | Scenario 2, 3 |
