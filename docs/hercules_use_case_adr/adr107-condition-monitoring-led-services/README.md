@@ -1,7 +1,8 @@
 ---
 id: fx_adr107
 title: ADR 107 – Condition monitoring led services
-date: 2026-03-12
+sidebar_label: ADR 107 – Condition monitoring led services
+description: Normative guidance for the Condition Monitoring Led Services (CMLS) use case, covering roles, API structure, data models, and authentication.
 tags:
   - architecture_decision_records
   - API
@@ -43,7 +44,7 @@ The Data Consumer MUST expose the endpoints according to the following Architect
 
 ## Authentication and Authorization
 
-Participants must comply to authentication and authorization defined ADR-002 and ADR-003.
+Participants MUST comply to authentication and authorization defined ADR-002 and ADR-003.
 
 ## Data Models
 
@@ -96,9 +97,9 @@ To describe the states of machines and components, we recommend using the VDMA G
 
 ### Summary of the Problem Statement and Solution
 
-The existing Time Series Submodel (V1.1 https://github.com/admin-shell-io/submodel-templates/tree/main/published/Time%20Series%20Data/1/1) allows various options for "storing" data, using metadata, and using optional fields. These options shall be narrowed down in order to share time series data between partners for condition monitoring purposes in Use Case TP2.04.
+The existing Time Series Submodel (V1.1 https://github.com/admin-shell-io/submodel-templates/tree/main/published/Time%20Series%20Data/1/1) allows various options for "storing" data, using metadata, and using optional fields. These options SHALL be narrowed down in order to share time series data between partners for condition monitoring purposes in Use Case TP2.04.
 
-For this, fundamental assumptions must be made that participants (data producers/providers and consumers) are expected to fulfill. These assumptions ensure that the time series submodel can be populated cleanly without generating conflicts.
+For this, fundamental assumptions MUST be made that participants (data producers/providers and consumers) are expected to fulfill. These assumptions ensure that the time series submodel can be populated cleanly without generating conflicts.
 
 The solution consists of describing these fundamental assumptions here and defining the specification of the Time Series Submodel (V1.1) further.
 
@@ -153,14 +154,14 @@ The metadata describes the individual columns of the data blobs contained in the
 - **Metadata** (Cardinality [1])
   - **Name** (Cardinality [1]): Description valid for all recordings
   - **Description** (Cardinality [0..1]): (Recommended: describe the source of the data)
-  - **Record** (Cardinality [1]) — describes the "columns" in the blob (the idShort of the Property must be equal to the column name in the blob)
+  - **Record** (Cardinality [1]) — describes the "columns" in the blob (the idShort of the Property MUST be equal to the column name in the blob)
     - Timestamp
     - columnValue1
     - columnValue2
     - …
     - columnValueN
 
-To enable automatic processing of the values in the "columns", each value must be assigned a semanticId of type IRDI.
+To enable automatic processing of the values in the "columns", each value MUST be assigned a semanticId of type IRDI.
 
 ##### Excursus: Semantic Description of Physical Units for Properties
 
@@ -303,7 +304,7 @@ No `supplementalSemanticIds` is used, as it is already specified at a higher lev
 
 The blob itself is represented by a JSON with 2 properties:
 
-- **columns**: "Headers" of the data. The name must be equal to the idShort of the Property in Metadata.
+- **columns**: "Headers" of the data. The name MUST be equal to the idShort of the Property in Metadata.
 - **values**: The actual data.
 
 The first column is always a 64-bit UTC timestamp in nanoseconds since 1970.
@@ -320,7 +321,7 @@ All values in the columns are enclosed in double quotes (`"`). The data types, u
 **JSON Schema Description for the Example Below**
 
 - Description of the JSON format: [demonstrators-tp2.4/Common/TP2.04_TimeSeriesSubmodel/BlobDefinition at main · factory-x-contributions/demonstrators-tp2.4](https://github.com/factory-x-contributions/demonstrators-tp2.4/tree/main/Common/TP2.04_TimeSeriesSubmodel/BlobDefinition)
-- Formatting of data points: Each data point is represented as a string. Except for "Time", the values must consist of numbers and at most one dot. (Exponential notation is not allowed.)
+- Formatting of data points: Each data point is represented as a string. Except for "Time", the values MUST consist of numbers and at most one dot. (Exponential notation is not allowed.)
 - Prerequisite: There are no missing data points. The measurement system performs a gapless recording. (i.e., no NaN)
 
 **Example**
@@ -349,7 +350,7 @@ Here, the data access and discovery process are described, with a focus on the s
 
 #### Discovery
 
-It is assumed that the client typically knows the ID of the AAS to which the submodel is attached (for example by obtaining the id via an event notification) - otherwise the AAS-ID must be obtained using a different flow. 
+It is assumed that the client typically knows the ID of the AAS to which the submodel is attached (for example by obtaining the id via an event notification) - otherwise the AAS-ID MUST be obtained using a different flow. 
 From there the Submodels can be checked for the supplemental semantic id (see below).
 
 If the client has some other criterion on the submodel level, the Submodel Repository API can be used to search across all submodels to find the corresponding submodel as illustrated in _Fig. Discovery Flow Semantic-ID_. Note that it has to match the supplemental semantic id.
@@ -360,7 +361,7 @@ If the client has some other criterion on the submodel level, the Submodel Repos
 
 **Remarks:**
 
-- Current implementations do not provide an endpoint for querying submodels based on the Supplemental Semantic ID. Therefore, all submodels or Time Series Submodels must first be retrieved via the base64-encoded Semantic ID, and then checked for the Supplemental Semantic ID in a second step.
+- Current implementations do not provide an endpoint for querying submodels based on the Supplemental Semantic ID. Therefore, all submodels or Time Series Submodels MUST first be retrieved via the base64-encoded Semantic ID, and then checked for the Supplemental Semantic ID in a second step.
 - In this workflow, the metadata `$metadata` of all 'readable' (access-controlled) submodels of the AAS server is retrieved, which can result in a large volume.
 - It was assumed that the client can filter the correct submodel based on a criterion.
 
