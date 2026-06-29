@@ -24,6 +24,9 @@ Architecture Decision Records for the Factory-X consortium
 
 ---
 
+> [!IMPORTANT]
+> **This repository is archived.** It will receive no further development or maintenance. Interested parties are invited to fork the repository and continue the work independently.
+
 ## Getting Started
 
 This website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
