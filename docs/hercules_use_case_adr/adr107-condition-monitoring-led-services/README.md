@@ -320,7 +320,7 @@ All values in the columns are enclosed in double quotes (`"`). The data types, u
 
 **JSON Schema Description for the Example Below**
 
-- Description of the JSON format: [demonstrators-tp2.4/Common/TP2.04_TimeSeriesSubmodel/BlobDefinition at main · factory-x-contributions/demonstrators-tp2.4](https://github.com/factory-x-contributions/demonstrators-tp2.4/tree/main/Common/TP2.04_TimeSeriesSubmodel/BlobDefinition)
+- Description of the JSON format: [demonstrators-tp2.4/Common/TP2.04_TimeSeriesSubmodel/BlobDefinition at main · factory-x-contributions/demonstrators-tp2.4](https://github.com/factory-x-contributions/TP2.4-AAS-Model/tree/main/TimeSeriesData_TP2.04Specification/BlobDefinition)
 - Formatting of data points: Each data point is represented as a string. Except for "Time", the values MUST consist of numbers and at most one dot. (Exponential notation is not allowed.)
 - Prerequisite: There are no missing data points. The measurement system performs a gapless recording. (i.e., no NaN)
 
